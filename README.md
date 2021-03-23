@@ -90,7 +90,7 @@ Notes:
 - Make sure it start with the dot (".zip" and not just "zip").
 - At the moment this script not provide implementation for multiple extensions.
 
-### parameter 4
+### parameter 5
 This parameter you can control which accounts will be copied to BackBlaze.
 If you will just provide directories to send the files, please choose the "none" option. If you provide a hosting panel option in the parameter 1, then please choose if you want create and copy backups of all acounts or just active accounts (suspended accounts will not be copied).
 
@@ -98,4 +98,11 @@ The options are:
 - default
 - all
 - active
+
+### parameter 6
+Provide the BackBlaze bucket name. Please garantee that the name is correct. The name is case sensitive, so be sure about the buck name.
+
+The options are:
+- bucketname
+
 
