@@ -54,8 +54,16 @@ main()
 # global vars
 log_file=/var/log/backblaze-backup.log
 log_hash=\$(date +%s | sha256sum | base64 | head -c 16)
+parameters_count=$#
+parameters_count_expected=6
 backup_type=$1
 
+# test parameters number
+if [[ $parameters_count -ne $parameters_count_expected ]]
+then
+  log ERROR "Parameters number expected is >>> $parameters_count_expected <<< but >>> $parameters_count <<< were given instead. Aborting with return code >>> 2 <<<."
+  exit 2
+fi
 
 
 # unknown error
