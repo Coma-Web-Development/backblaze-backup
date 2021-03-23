@@ -33,7 +33,7 @@ sendToBackBlazeS3Service()
 # find backup files
 findBackupFiles()
 {
-
+  # TO DO
 }
 
 testRootPermission()
@@ -43,6 +43,26 @@ testRootPermission()
     log ERROR "backblaze-backup not executed with root permiission. Aborting with return code >>> 1 <<<."
     exit 1
   fi
+}
+
+hestiacpBackup()
+{
+    # TO DO
+}
+
+vestacpBackup()
+{
+  # TO DO
+}
+
+cyberpanelBackup()
+{
+  # TO DO
+}
+
+directoriesBackup()
+{
+  # TO DO
 }
 
 main()
