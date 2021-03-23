@@ -47,9 +47,11 @@ The options are:
 - hestiacp
 - vestacp
 - cyberpanel
-- "directory1 directory2 directory3 ... directoryN"
+- "/absolut/path/directory1 /absolut/path/directory2 /absolut/path/directory3 ... /absolut/path/directoryN"
 
-If you provide a list of directories instead of hosting panel, please separate them using spaces and do not remove the double quotes or they will fail. The quotes will make all directories as only one parameter, the parameter 1.
+Notes:
+- If you provide a list of directories instead of hosting panel, please separate them using spaces and do not remove the double quotes or they will fail. The quotes will make all directories as only one parameter, the parameter 1.
+- The directory path must be absolut.
 
 ### parameter 2
 Do you want to remove the backup after it was successfully sent to BackBlaze?
@@ -65,11 +67,12 @@ Notes:
 - If the hosting panel does not provide this possibility, the /backup will be used.
 - If you provide a custom directory, this script will not try to create if it not exist. Please guarante that the directory exist or the script will abort.
 - You can provide multiple directories. Make sure they are separated by spaces and do not remove the double quotes.
+- The directory path must be absolut.
 
 The options are:
 - default
-- directory1
-- "directory1 directory2 ... directoryN"
+- /absolut/path/directory1
+- "/absolut/path/directory1 /absolut/path/directory2 /absolut/path/directory3 ... /absolut/path/directoryN"
 
 
 ### parameter 4
