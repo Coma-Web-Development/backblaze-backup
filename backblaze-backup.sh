@@ -23,9 +23,12 @@ sendToBackBlazeS3Service()
   do
     /usr/bin/backblaze upload_file $bucket_name ${backup_file} $(basename "${backup_file%.*}")
     backblaze_return=$?
-    if [ $backblaze_return -eq 0 ]
+    if [[ $backblaze_return -eq 0 ]]
     then
-      removeFiles $backup_file
+      if [[ "$backup_remove" == "yesRemoveAfterSent" ]]
+      then
+        removeFiles $backup_file
+      fi
     fi
   done
 }
@@ -77,7 +80,7 @@ log_hash=\$(date +%s | sha256sum | base64 | head -c 16)
 parameters_count=$#
 parameters_count_expected=6
 backup_type=$1
-backup_remote=$2
+backup_remove=$2
 backup_dir=$3
 backup_files_extension=$4
 backup_accounts_status=$5
