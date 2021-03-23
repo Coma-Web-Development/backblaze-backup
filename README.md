@@ -19,6 +19,7 @@ If you do not want to use any hosting panel schema, we will also provide a way t
 | zabbix notification script | TO DO |
 | backblaze-backup script examples | TO DO |
 | upgrade blackbaze binary script | TO DO |
+| script to remove backblaze setup | TO DO |
 
 # how to install
 1. Execute the installer. It will install the latest stable and official backblaze binary for Linux x85_64
