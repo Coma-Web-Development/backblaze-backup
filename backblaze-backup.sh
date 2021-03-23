@@ -57,6 +57,11 @@ log_hash=\$(date +%s | sha256sum | base64 | head -c 16)
 parameters_count=$#
 parameters_count_expected=6
 backup_type=$1
+backup_remote=$2
+backup_dir=$3
+backup_files_extension=$4
+backup_accounts_status=$5
+backblaze_bucket_name=$6
 
 # test parameters number
 if [[ $parameters_count -ne $parameters_count_expected ]]
