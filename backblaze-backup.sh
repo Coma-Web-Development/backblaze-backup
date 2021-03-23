@@ -65,6 +65,7 @@ then
   exit 2
 fi
 
+main
 
 # unknown error
 exit 255
