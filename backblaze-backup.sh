@@ -3,6 +3,14 @@
 # functions
 
 # remove files
+log()
+{
+  log_type=$1
+  shift 1
+  log_date=$(date -R)
+  echo "|$log_type|$log_date|$log_hash|$@" >> $log_file
+}
+
 removeFiles()
 {
   rm -f $@
@@ -28,6 +36,15 @@ findBackupFiles()
 
 }
 
+testRootPermission()
+{
+  if ((${EUID:-0} || "$(id -u)"))
+  then
+    log ERROR "backblaze-backup not executed with root permiission. Aborting with return code >>> 1 <<<."
+    exit 1
+  fi
+}
+
 main()
 {
   
@@ -35,4 +52,11 @@ main()
 }
 
 # global vars
-backup_type=1
+log_file=/var/log/backblaze-backup.log
+log_hash=\$(date +%s | sha256sum | base64 | head -c 16)
+backup_type=$1
+
+
+
+# unknown error
+exit 255
