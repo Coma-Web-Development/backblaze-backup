@@ -70,7 +70,34 @@ directoriesBackup()
 
 main()
 {
-  testRootPermission  
+  testRootPermission
+
+  case $backup_type in
+    hestiacp)
+      hestiacpBackup
+      ;;
+    vestacp)
+      vestacpBackup
+      ;;
+    cyberpanel)
+      cyberpanelBackup
+      ;;
+    *)
+        # test if all directories are valid
+        for dir_test in $backup_type
+        do
+          if [ ! -d $dir_test ]
+          then
+            log ERROR "Directory or directories given: >>> $backup_type <<<. The directory >>> $dir_test <<< is not valid. Aborting with return code >>> 3 <<<."
+            exit 3
+          fi
+        done
+
+        # if they are valid, continue
+        directoriesBackup
+      ;;
+  esac
+
   exit 0
 }
 
