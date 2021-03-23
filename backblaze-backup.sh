@@ -47,7 +47,7 @@ testRootPermission()
 
 main()
 {
-  
+  testRootPermission  
   exit 0
 }
 
