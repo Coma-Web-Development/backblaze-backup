@@ -21,15 +21,23 @@ sendToBackBlazeS3Service()
 {
   for backup_file in $@
   do
-    /usr/bin/backblaze upload_file $bucket_name ${backup_file} $(basename "${backup_file%.*}")
-    backblaze_return=$?
-    if [[ $backblaze_return -eq 0 ]]
-    then
-      if [[ "$backup_remove" == "yesRemoveAfterSent" ]]
+    tries_num=3
+    while [ $tries -ne 0 ]
+    do
+      /usr/bin/backblaze upload_file $bucket_name ${backup_file} $(basename "${backup_file%.*}")
+      backblaze_return=$?
+
+      if [[ $backblaze_return -eq 0 ]]
       then
-        removeFiles $backup_file
+        tries_num=0
+        if [[ "$backup_remove" == "yesRemoveAfterSent" ]]
+        then
+          removeFiles $backup_file
+        fi
+      else
+        tries_num=$(($tries_num-1))
       fi
-    fi
+    done
   done
 }
 
