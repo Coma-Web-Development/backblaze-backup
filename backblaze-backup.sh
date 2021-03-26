@@ -101,22 +101,70 @@ getActiveUsersCyberpanel()
 
 hestiacpBackup()
 {
-    # TO DO
+  # check if there is a hestia script
+  if [ -f /usr/local/hestia/bin/v-list-users ]
+  then
+    # get all users to create the backup
+    if cat $backup_accounts_status | egrep -iq "^active$"
+    then
+      getActiveUsersHestiacp
+    else
+      getAllUsersHestiacp
+    fi
+  else
+    log ERROR "Not seems to be a hestiacp server. Aborting with return code >>> 4 <<<."
+    exit 4
+  fi
+
+  # create backup and send to s3
+  # TODO
 }
 
 vestacpBackup()
 {
-  # TO DO
+  # check if there is a vesta script
+  if [ -f /usr/local/vesta/bin/v-list-users ]
+  then
+    # get all users to create the backup
+    if cat $backup_accounts_status | egrep -iq "^active$"
+    then    
+      getActiveUsersVestacp
+    else
+      getAllUsersVestacp
+    fi
+  else
+    log ERROR "Not seems to be a vestacp server. Aborting with return code >>> 5 <<<."
+    exit 5
+  fi
+
+  # create backup and send to s3
+  # TODO
 }
 
 cyberpanelBackup()
 {
+  # check if there is a cyberpanel script
+  if [ -f /usr/bin/cyberpanel ]
+  then
+    # get all users to create the backup
+    if cat $backup_accounts_status | egrep -iq "^active$"
+    then    
+      getActiveUsersVestacp
+    else
+      getAllUsersVestacp
+    fi
+  else
+    log ERROR "Not seems to be a cyberpanel server. Aborting with return code >>> 6 <<<."
+    exit 6
+  fi
+
+  # create backup and send to s3
   # TO DO
 }
 
 directoriesBackup()
 {
-  # TO DO
+  # TODO
 }
 
 main()
@@ -177,4 +225,5 @@ fi
 main
 
 # unknown error
+log ERROR "Unknown error. Aborting with code >>> 255 <<<."
 exit 255
