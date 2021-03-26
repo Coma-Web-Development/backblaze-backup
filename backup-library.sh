@@ -84,7 +84,8 @@ createAndSendCyberpanelBackup()
   for cyberpanel_website in $cyberpanel_websites
   do
     # TODO fix where is the file and the file name
-    backup_file_path=$(/usr/bin/cyberpanel --domainName $cyberpanel_website)
+    /usr/bin/cyberpanel --domainName $cyberpanel_website &> /dev/null
+    backup_file_path=$(ls -hrt /home/${cyberpanel_website}/backup/*.tar.gz | tail -n 1)
     selectS3ServiceAndSend $backup_file_path
   done
 }
