@@ -98,7 +98,7 @@ This parameter you can control which accounts will be copied to BackBlaze.
 If you will just provide directories to send the files, please choose the "none" option. If you provide a hosting panel option in the parameter 1, then please choose if you want create and copy backups of all acounts or just active accounts (suspended accounts will not be copied).
 
 The options are:
-- default
+- none
 - all
 - active
 
