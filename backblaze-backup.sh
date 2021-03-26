@@ -35,16 +35,26 @@ sendToBackBlazeS3Service()
           removeFiles $backup_file
         fi
       else
+        log ERROR "Failed to upload the file >>> ${backup_file} <<< with return code >>> $backblaze_return <<<. Attempt number >>> $tries_num <<<."
         tries_num=$(($tries_num-1))
       fi
     done
+
+    if [ $tries_num -eq 0 ] && [ $backblaze_return -ne 0 ]
+    then
+      log ERROR "Failed to upload the file >>> ${backup_file} <<< with return code >>> $backblaze_return <<<. No more attempts will be done."
+    fi
   done
 }
 
 # find backup files
 findBackupFiles()
 {
-  # TO DO
+  export -f sendToBackBlazeS3Service
+  for backup_local_dir in $backup_type
+  do
+    find $backup_local_dir -type f -iname "*${backup_files_extension}" -exec bash -c 'sendToBackBlazeS3Service "$1"' _ {} \;
+  done
 }
 
 testRootPermission()
