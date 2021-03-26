@@ -61,19 +61,27 @@ selectS3ServiceAndSend()
 # create and send vestacp backup
 createAndSendVestacpBackup()
 {
-  #TODO create backup and send the file absolut path
+  for vestacp_account in $vestacp_accounts
+  do
+    backup_file_path=$(/usr/local/vesta/bin/v-backup-user admin | egrep Local | awk '{print $4}')
+    selectS3ServiceAndSend $backup_file_path
+  done
 }
 
 # create and send hestiacp backup
 createAndSendHestiacpBackup()
 {
-  #TODO create backup and send the file absolut path
+  for hestiacp_account in $hestiacp_accounts
+  do
+    backup_file_path=$(/usr/local/hestia/bin/v-backup-user admin | egrep Local | awk '{print $4}')
+    selectS3ServiceAndSend $backup_file_path
+  done
 }
 
 # create and send cyberpanel backup
 createAndSendCyberpanelBackup()
 {
-  #TODO create backup and send the file absolut path
+  selectS3ServiceAndSend $backup_file_path
 }
 
 
@@ -125,8 +133,6 @@ getActiveUsersCyberpanel()
 {
   cyberpanel_accounts=$(/usr/bin/cyberpanel listWebsitesJson | jq -r 'fromjson[] | select(.state=="Active") | .admin')
 }
-
-
 
 hestiacpBackup()
 {
@@ -206,6 +212,11 @@ testBackupDefaultDir()
       chmod 750 /backup
       backup_dir=/backup
     fi
+  else
+    if [ ! -d $backup_dir ]
+    then
+      log ERROR "The provided directory to create temp files >>> $backup_dir <<< does not exist. Aborting with return code error >>> 7 <<<."
+    fi
   fi
 }
 
@@ -213,6 +224,9 @@ main()
 {
   testRootPermission
   testBackupDefaultDir
+ 
+  # go to the provided dir to create temp files, if they are needed 
+  cd $backup_dir
   export -f selectS3ServiceAndSend
 
   case $backup_type in
