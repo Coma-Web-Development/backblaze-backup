@@ -68,11 +68,11 @@ Notes:
 - If you provide a custom directory, this script will not try to create if it not exist. Please guarante that the directory exist or the script will abort.
 - You can provide multiple directories. Make sure they are separated by spaces and do not remove the double quotes.
 - The directory path must be absolut.
+- Multiple directories does not make sense here.
 
 The options are:
 - default
 - /absolut/path/directory1
-- "/absolut/path/directory1 /absolut/path/directory2 /absolut/path/directory3 ... /absolut/path/directoryN"
 
 
 ### parameter 4
