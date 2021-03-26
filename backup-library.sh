@@ -17,7 +17,7 @@ removeFiles()
 }
 
 # send files to blackbaze s3 service
-sendToBackBlazeS3Service()
+sendToBackblazeS3Service()
 {
   for backup_file in $@
   do
@@ -47,32 +47,42 @@ sendToBackBlazeS3Service()
   done
 }
 
+# general function to send the backup based on service
+selectS3ServiceAndSend()
+{
+  file_to_be_sent=$1
+  case $backup_service_name in
+    backblaze)
+      sendToBackblazeS3Service $file_to_be_sent
+    ;;
+  esac
+}
+
 # create and send vestacp backup
 createAndSendVestacpBackup()
 {
-  #TODO
+  #TODO create backup and send the file absolut path
 }
 
 # create and send hestiacp backup
 createAndSendHestiacpBackup()
 {
-  #TODO
+  #TODO create backup and send the file absolut path
 }
 
 # create and send cyberpanel backup
 createAndSendCyberpanelBackup()
 {
-  #TODO
+  #TODO create backup and send the file absolut path
 }
 
 
 # find backup files
 findBackupFiles()
 {
-  export -f sendToBackBlazeS3Service
   for backup_local_dir in $backup_type
   do
-    find $backup_local_dir -type f -iname "*${backup_files_extension}" -exec bash -c 'sendToBackBlazeS3Service "$1"' _ {} \;
+    find $backup_local_dir -type f -iname "*${backup_files_extension}" -exec bash -c 'sendToBackblazeS3Service "$1"' _ {} \;
   done
 }
 
@@ -186,9 +196,24 @@ directoriesBackup()
   # TODO
 }
 
+testBackupDefaultDir()
+{
+  if [[ "$backup_dir" == "default" ]]
+  then
+    if [ ! -d /backup ]
+    then
+      mkdir /backup
+      chmod 750 /backup
+      backup_dir=/backup
+    fi
+  fi
+}
+
 main()
 {
   testRootPermission
+  testBackupDefaultDir
+  export -f selectS3ServiceAndSend
 
   case $backup_type in
     hestiacp)
