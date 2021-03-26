@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source library.sh
+source /usr/lib/backup-library.sh
 
 # global vars
 log_file=/var/log/backblaze-backup.log
