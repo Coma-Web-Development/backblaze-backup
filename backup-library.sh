@@ -24,7 +24,7 @@ sendToBackBlazeS3Service()
     tries_num=3
     while [ $tries -ne 0 ]
     do
-      /usr/bin/backblaze upload_file $bucket_name ${backup_file} $(basename "${backup_file%.*}")
+      /usr/bin/backblaze upload_file $backup_bucket_name ${backup_file} $(basename "${backup_file%.*}")
       backblaze_return=$?
 
       if [[ $backblaze_return -eq 0 ]]
