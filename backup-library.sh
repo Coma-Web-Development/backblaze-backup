@@ -81,7 +81,12 @@ createAndSendHestiacpBackup()
 # create and send cyberpanel backup
 createAndSendCyberpanelBackup()
 {
-  selectS3ServiceAndSend $backup_file_path
+  for cyberpanel_website in $cyberpanel_websites
+  do
+    # TODO fix where is the file and the file name
+    backup_file_path=$(/usr/bin/cyberpanel --domainName $cyberpanel_website)
+    selectS3ServiceAndSend $backup_file_path
+  done
 }
 
 
@@ -126,12 +131,12 @@ getActiveUsersHestiacp()
 
 getAllUsersCyberpanel()
 {
-  cyberpanel_accounts=$(/usr/bin/cyberpanel listWebsitesJson | jq -r 'fromjson[] | .admin')
+  cyberpanel_websites=$(/usr/bin/cyberpanel listWebsitesJson | jq -r 'fromjson[] | .domain')
 }
 
 getActiveUsersCyberpanel()
 {
-  cyberpanel_accounts=$(/usr/bin/cyberpanel listWebsitesJson | jq -r 'fromjson[] | select(.state=="Active") | .admin')
+  cyberpanel_websites=$(/usr/bin/cyberpanel listWebsitesJson | jq -r 'fromjson[] | select(.state=="Active") | .domain')
 }
 
 hestiacpBackup()
