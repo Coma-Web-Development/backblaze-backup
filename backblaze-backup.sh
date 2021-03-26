@@ -47,6 +47,25 @@ sendToBackBlazeS3Service()
   done
 }
 
+# create and send vestacp backup
+createAndSendVestacpBackup()
+{
+  #TODO
+}
+
+# create and send hestiacp backup
+createAndSendHestiacpBackup()
+{
+  #TODO
+}
+
+# create and send cyberpanel backup
+createAndSendCyberpanelBackup()
+{
+  #TODO
+}
+
+
 # find backup files
 findBackupFiles()
 {
@@ -117,7 +136,7 @@ hestiacpBackup()
   fi
 
   # create backup and send to s3
-  # TODO
+  createAndSendHestiacpBackup
 }
 
 vestacpBackup()
@@ -138,7 +157,7 @@ vestacpBackup()
   fi
 
   # create backup and send to s3
-  # TODO
+  createAndSendVestacpBackup
 }
 
 cyberpanelBackup()
@@ -159,7 +178,7 @@ cyberpanelBackup()
   fi
 
   # create backup and send to s3
-  # TO DO
+  createAndSendCyberpanelBackup
 }
 
 directoriesBackup()
