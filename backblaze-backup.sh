@@ -56,6 +56,39 @@ testRootPermission()
   fi
 }
 
+getAllUsersVestacp()
+{
+  vestacp_accounts=$(/usr/local/vesta/bin/v-list-users | tail -n +3 | awk '{print $1}')
+}
+
+getActiveUsersVestacp()
+{
+  vestacp_accounts=$(/usr/local/vesta/bin/v-list-users | tail -n +3 | egrep -i "[a-zA-Z0-9]+[ ]+[a-zA-Z0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+no[ ]+[0-9]+-[0-9]+-[0-9]+" | awk '{print $1}')
+}
+
+getAllUsersHestiacp()
+{
+  hestiacp_accounts=$(/usr/local/hestia/bin/v-list-users | tail -n +3 | awk '{print $1}')
+}
+
+getActiveUsersHestiacp()
+{
+  hestiacp_accounts=$(/usr/local/hestia/bin/v-list-users | tail -n +3 | egrep -i "[a-zA-Z0-9]+[ ]+[a-zA-Z0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+no[ ]+[0-9]+-[0-9]+-[0-9]+" | awk '{print $1}')
+}
+
+
+getAllUsersCyberpanel()
+{
+  cyberpanel_accounts=$(/usr/bin/cyberpanel listWebsitesJson | jq -r 'fromjson[] | .admin')
+}
+
+getActiveUsersCyberpanel()
+{
+  cyberpanel_accounts=$(/usr/bin/cyberpanel listWebsitesJson | jq -r 'fromjson[] | select(.state=="Active") | .admin')
+}
+
+
+
 hestiacpBackup()
 {
     # TO DO
@@ -120,6 +153,9 @@ backup_dir=$3
 backup_files_extension=$4
 backup_accounts_status=$5
 backblaze_bucket_name=$6
+hestiacp_accounts=
+vestacp_accounts=
+cyberpanel_accounts=
 
 # test parameters number
 if [[ $parameters_count -ne $parameters_count_expected ]]
