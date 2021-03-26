@@ -16,7 +16,7 @@ backup_bucket_name=$6
 backup_service_name=backblaze
 hestiacp_accounts=
 vestacp_accounts=
-cyberpanel_accounts=
+cyberpanel_websites=
 
 # test parameters number
 if [[ $parameters_count -ne $parameters_count_expected ]]
