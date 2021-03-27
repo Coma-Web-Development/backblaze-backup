@@ -109,3 +109,14 @@ The options are:
 - bucketname
 
 
+## Examples
+### cyberpanel (example 1)
+1. "cyberpanel": server
+2. "yesRemoveAfterSent": Remove backup after send
+3. "default": cyberpanel does not allow to choose the directory destiny
+4. "default": does not matter, will be .tar.gz always.
+5. "all": active and suspended accounts
+6. "myserver-backup": s3 bucket name
+```bash
+/usr/bin/backblaze-backup.sh cyberpanel yesRemoveAfterSent default default all myserver-backup
+```
