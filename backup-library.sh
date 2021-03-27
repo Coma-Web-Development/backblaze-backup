@@ -99,7 +99,20 @@ createAndSendCyberpanelBackup()
     # TODO fix where is the file and the file name
     /usr/bin/cyberpanel createBackup --domainName $cyberpanel_website &> /dev/null
     backup_file_path=$(ls -hrt /home/${cyberpanel_website}/backup/*.tar.gz | tail -n 1)
-    selectS3ServiceAndSend $backup_file_path
+    
+    if [[ "{$backup_file_path}x" == "x" ]]
+    then
+      log ERROR "The Cyberpanel backup procedure failed to create the backup to the account >>> $cyberpanel_website <<<. Aborting with return code >>> 9 <<<."
+      exit 9
+    else
+      if [ ! -f $backup_file_path ]
+      then
+        log ERROR "The Cyberpanel backup procedure of account >>> $cyberpanel_website <<< failed because the file >>> $backup_file_path <<< is not found. Aborting with return code >>> 10 <<<."
+        exit 10
+      else
+        selectS3ServiceAndSend $backup_file_path
+      fi
+    fi
   done
 }
 
