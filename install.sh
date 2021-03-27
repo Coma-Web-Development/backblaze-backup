@@ -20,11 +20,20 @@ authorizeAccount()
   echo "Note: change the applicationKeyId and applicationKey to the respective credentials"
 }
 
+requirementsPackages()
+{
+  echo "Some packages are required. Please install them."
+  echo "- jq"
+  echo "Centos/redhat: yum -y install jq"
+  echo "Ubuntu/debian: apt update && apt -y install jq" 
+}
+
 main()
 {
   installBinary
   installScript
   authorizeAccount
+  requirementsPackages
   exit 0
 }
 
