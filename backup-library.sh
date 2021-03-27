@@ -193,6 +193,11 @@ cyberpanelBackup()
   createAndSendCyberpanelBackup
 }
 
+findFilesAndUploadToS3()
+{
+  # TODO
+}
+
 directoriesBackup()
 {
   for backup_dir_path in $backup_type
@@ -205,13 +210,14 @@ directoriesBackup()
     rm -f $directory_structure_file 
     
     # upload all files
+    findFilesAndUploadToS3 $backup_dir_path
   done
 }
 
 testBackupDefaultDir()
 {
   if [[ "$backup_dir" == "default" ]]
-  then
+then
     if [ ! -d /backup ]
     then
       mkdir /backup
