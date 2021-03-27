@@ -30,6 +30,12 @@ bash install.sh
 ```bash
 backblaze authorize-account applicationKeyId applicationKey
 ```
+
+# how to remove
+```bash
+bash uninstall.sh
+```
+
 # backblaze-backup.sh parameters explained
 - The script backblaze-backup need some parameters to understand what you want to do.
 - All of them are mandatory, you can not skip anyone.
