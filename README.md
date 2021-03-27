@@ -36,6 +36,12 @@ backblaze authorize-account applicationKeyId applicationKey
 bash uninstall.sh
 ```
 
+# how to upgrade backblaze
+Just execute the installer again! You do not need to authrorize the s3 credentials again.
+```bash
+bash install.sh
+```
+
 # backblaze-backup.sh parameters explained
 - The script backblaze-backup need some parameters to understand what you want to do.
 - All of them are mandatory, you can not skip anyone.
