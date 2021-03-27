@@ -43,6 +43,17 @@ Just execute the installer again! You do not need to authrorize the s3 credentia
 bash install.sh
 ```
 
+# where is the logs
+Generic name:
+```bash
+/var/log/backup-*.log
+```
+
+Backblaze example:
+```bash
+/var/log/backblaze-backup.log
+```
+
 # backblaze-backup.sh parameters explained
 - The script backblaze-backup need some parameters to understand what you want to do.
 - All of them are mandatory, you can not skip anyone.

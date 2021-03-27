@@ -3,7 +3,7 @@
 source /usr/lib/backup-library.sh
 
 # global vars
-log_file=/var/log/backblaze-backup.log
+log_file=/var/log/backup-backblaze.log
 log_hash=$(date +%s | sha256sum | base64 | head -c 16)
 parameters_count=$#
 parameters_count_expected=6
