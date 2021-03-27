@@ -70,7 +70,13 @@ createAndSendVestacpBackup()
       log ERROR "The VestaCP backup procedure failed to create the backup to the account >>> $backup_file_path <<<. Aborting with return code >>> 7 <<<."
       exit 7
     else
-      selectS3ServiceAndSend $backup_file_path
+      if [ ! -f $backup_file_path ]
+      then
+        log ERROR "The VestaCP backup procedure of account >>> $vestacp_account <<< failed because the file >>> $backup_file_path <<< is not found. Aborting with return code >>> 12 <<<."
+        exit 12
+      else
+        selectS3ServiceAndSend $backup_file_path
+      fi
     fi
   done
 }
@@ -86,7 +92,13 @@ createAndSendHestiacpBackup()
       log ERROR "The VestaCP backup procedure failed to create the backup to the account >>> $backup_file_path <<<. Aborting with return code >>> 8 <<<."
       exit 8
     else
-      selectS3ServiceAndSend $backup_file_path
+      if [ ! -f $backup_file_path ]
+      then
+        log ERROR "The HestiaCP backup procedure of account >>> $hestiacp_account <<< failed because the file >>> $backup_file_path <<< is not found. Aborting with return code >>> 11 <<<."
+        exit 11
+      else
+        selectS3ServiceAndSend $backup_file_path
+      fi
     fi
   done
 }
