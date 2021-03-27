@@ -11,15 +11,16 @@ If you do not want to use any hosting panel schema, we will also provide a way t
 # Features implemented and TO DO
 | Feature | Status |
 | - | - |
-| hestiacp backup | done |
-| vestacp backup | done |
-| cyberpanel backup | done |
+| hestiacp backup | DONE |
+| vestacp backup | DONE |
+| cyberpanel backup | DONE |
 | multiple extensions | TO DO |
-| log to audit the backup | done |
+| log to audit the backup | DONE |
 | zabbix notification script | TO DO |
 | backblaze-backup script examples | TO DO |
-| upgrade blackbaze binary script | done |
-| script to remove backblaze setup | done |
+| upgrade blackbaze binary script | DONE |
+| script to remove backblaze setup | DONE |
+| how to create crontab | DONE |
 
 # how to install
 1. Execute the installer. It will install the latest stable and official backblaze binary for Linux x85_64
@@ -121,8 +122,36 @@ The options are:
 - bucketname
 
 
-## Examples
-### cyberpanel (example 1)
+# How to add to cronjob
+You need to execute the script as root. So add the cronjob to root crontab. You can manually edit the file
+
+```bash
+/var/spool/cron/root
+```
+
+or
+
+```bash
+crontab -e
+```
+
+Crontab exampple executing everyday 4AM:
+```bash
+0 4 * * * /usr/bin/backblaze-backup.sh cyberpanel yesRemoveAfterSent default default all myserver-backup
+```
+
+If you do not want to receive e-mails about every time that the script execute, please use:
+```bash
+0 4 * * * /usr/bin/backblaze-backup.sh cyberpanel yesRemoveAfterSent default default all myserver-backup &> /dev/null
+```
+
+More crontab configuration info/tips:
+- https://en.wikipedia.org/wiki/Cron
+- https://crontab.guru/
+- https://cron.help/
+
+# Examples
+## cyberpanel (example 1)
 1. "cyberpanel": server
 2. "yesRemoveAfterSent": Remove backup after send
 3. "default": cyberpanel does not allow to choose the directory destiny
