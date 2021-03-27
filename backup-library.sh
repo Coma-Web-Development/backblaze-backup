@@ -180,9 +180,9 @@ cyberpanelBackup()
     # get all users to create the backup
     if echo $backup_accounts_status | egrep -iq "^active$"
     then    
-      getActiveUsersVestacp
+      getActiveUsersCyberpanel
     else
-      getAllUsersVestacp
+      getAllUsersCyberpanel
     fi
   else
     log ERROR "Not seems to be a cyberpanel server. Aborting with return code >>> 6 <<<."
