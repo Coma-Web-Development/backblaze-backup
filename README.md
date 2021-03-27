@@ -17,7 +17,7 @@ If you do not want to use any hosting panel schema, we will also provide a way t
 | multiple extensions | TO DO |
 | log to audit the backup | DONE |
 | zabbix notification script | TO DO |
-| backblaze-backup script examples | TO DO |
+| backblaze-backup script examples | DONE |
 | upgrade blackbaze binary script | DONE |
 | script to remove backblaze setup | DONE |
 | how to create crontab | DONE |
@@ -163,12 +163,23 @@ More crontab configuration info/tips:
 
 # Examples
 ## cyberpanel (example 1)
-1. "cyberpanel": server
+1. "cyberpanel": cyberpanel server
 2. "yesRemoveAfterSent": Remove backup after send
 3. "default": cyberpanel does not allow to choose the directory destiny
-4. "default": does not matter, will be .tar.gz always.
+4. "default": does not matter, will be .tar.gz always
 5. "all": active and suspended accounts
 6. "myserver-backup": s3 bucket name
 ```bash
 /usr/bin/backblaze-backup.sh cyberpanel yesRemoveAfterSent default default all myserver-backup
+```
+
+## Hestiacp (example 2)
+1. "hestiacp": hestiacp server
+2. "yesRemoveAfterSent": Remove backup after send
+3. "/backup": The directory used to save the backups
+4. "default": does not matter, will be .tar.gz always
+5. "all": active and suspended accounts
+6. "mybucket": s3 bucket name
+```bash
+0 4 * * * /usr/bin/backblaze-backup.sh hestiacp yesRemoveAfterSent /backup default all mybucket
 ```
