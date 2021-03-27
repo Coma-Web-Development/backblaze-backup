@@ -136,7 +136,7 @@ hestiacpBackup()
   if [ -f /usr/local/hestia/bin/v-list-users ]
   then
     # get all users to create the backup
-    if cat $backup_accounts_status | egrep -iq "^active$"
+    if echo $backup_accounts_status | egrep -iq "^active$"
     then
       getActiveUsersHestiacp
     else
@@ -157,7 +157,7 @@ vestacpBackup()
   if [ -f /usr/local/vesta/bin/v-list-users ]
   then
     # get all users to create the backup
-    if cat $backup_accounts_status | egrep -iq "^active$"
+    if echo $backup_accounts_status | egrep -iq "^active$"
     then    
       getActiveUsersVestacp
     else
@@ -178,7 +178,7 @@ cyberpanelBackup()
   if [ -f /usr/bin/cyberpanel ]
   then
     # get all users to create the backup
-    if cat $backup_accounts_status | egrep -iq "^active$"
+    if echo $backup_accounts_status | egrep -iq "^active$"
     then    
       getActiveUsersVestacp
     else
