@@ -196,6 +196,7 @@ cyberpanelBackup()
 findFilesAndUploadToS3()
 {
   # TODO
+  exit 0
 }
 
 directoriesBackup()
