@@ -90,16 +90,6 @@ createAndSendCyberpanelBackup()
   done
 }
 
-
-# find backup files
-findBackupFiles()
-{
-  for backup_local_dir in $backup_type
-  do
-    find $backup_local_dir -type f -iname "*${backup_files_extension}" -exec bash -c 'sendToBackblazeS3Service "$1"' _ {} \;
-  done
-}
-
 testRootPermission()
 {
   if ((${EUID:-0} || "$(id -u)"))
@@ -243,7 +233,6 @@ main()
  
   # go to the provided dir to create temp files, if they are needed 
   cd $backup_dir
-  export -f selectS3ServiceAndSend
 
   case $backup_type in
     hestiacp)
