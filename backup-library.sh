@@ -218,13 +218,13 @@ directoriesBackup()
 testBackupDefaultDir()
 {
   if [[ "$backup_dir" == "default" ]]
-then
+  then
     if [ ! -d /backup ]
     then
       mkdir /backup
       chmod 750 /backup
-      backup_dir=/backup
     fi
+      backup_dir=/backup
   else
     if [ ! -d $backup_dir ]
     then
