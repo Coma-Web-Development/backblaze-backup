@@ -42,7 +42,8 @@ sendToBackblazeS3Service()
 
     if [ $tries_num -eq 0 ] && [ $backblaze_return -ne 0 ]
     then
-      log ERROR "Failed to upload the file >>> ${backup_file} <<< with return code >>> $backblaze_return <<<. No more attempts will be done."
+      removeFiles $backup_file
+      log ERROR "Failed to upload the file >>> ${backup_file} <<< with return code >>> $backblaze_return <<<. No more attempts will be done. The backup file >>> $backup_file <<< was removed."
     fi
   done
 }
