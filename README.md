@@ -11,15 +11,15 @@ If you do not want to use any hosting panel schema, we will also provide a way t
 # Features implemented and TO DO
 | Feature | Status |
 | - | - |
-| hestiacp backup | TO DO |
-| vestacp backup | TO DO |
-| cyberpanel backup | TO DO |
+| hestiacp backup | done |
+| vestacp backup | done |
+| cyberpanel backup | done |
 | multiple extensions | TO DO |
-| log to audit the backup | TO DO |
+| log to audit the backup | done |
 | zabbix notification script | TO DO |
 | backblaze-backup script examples | TO DO |
-| upgrade blackbaze binary script | TO DO |
-| script to remove backblaze setup | TO DO |
+| upgrade blackbaze binary script | done |
+| script to remove backblaze setup | done |
 
 # how to install
 1. Execute the installer. It will install the latest stable and official backblaze binary for Linux x85_64
