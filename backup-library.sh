@@ -8,7 +8,7 @@ log()
   log_type=$1
   shift 1
   log_date=$(date -R)
-  echo "|$log_type|$log_date|$log_hash|$@" >> $log_file
+  echo "|$log_type|$log_date|$log_hash|$backup_service_name|$@" >> $log_file
 }
 
 removeFiles()
