@@ -65,7 +65,13 @@ createAndSendVestacpBackup()
   for vestacp_account in $vestacp_accounts
   do
     backup_file_path=$(/usr/local/vesta/bin/v-backup-user $vestacp_account | egrep Local | awk '{print $4}')
-    selectS3ServiceAndSend $backup_file_path
+    if [[ "{$backup_file_path}x" == "x" ]]
+    then
+      log ERROR "The VestaCP backup procedure failed to create the backup to the account >>> $backup_file_path <<<. Aborting with return code >>> 7 <<<."
+      exit 7
+    else
+      selectS3ServiceAndSend $backup_file_path
+    fi
   done
 }
 
@@ -75,7 +81,13 @@ createAndSendHestiacpBackup()
   for hestiacp_account in $hestiacp_accounts
   do
     backup_file_path=$(/usr/local/hestia/bin/v-backup-user $hestiacp_account | egrep Local | awk '{print $4}')
-    selectS3ServiceAndSend $backup_file_path
+    if [[ "{$backup_file_path}x" == "x" ]]
+    then
+      log ERROR "The VestaCP backup procedure failed to create the backup to the account >>> $backup_file_path <<<. Aborting with return code >>> 8 <<<."
+      exit 8
+    else
+      selectS3ServiceAndSend $backup_file_path
+    fi
   done
 }
 
