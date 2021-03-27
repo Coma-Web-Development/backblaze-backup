@@ -205,7 +205,17 @@ cyberpanelBackup()
 
 directoriesBackup()
 {
-  # TODO
+  for backup_dir_path in $backup_type
+  do
+    # save the directory structure
+    backup_dir_path_without_slash=$(echo $backup_dir_path | sed 's#\/#_#g')
+    directory_structure_file=$(mktemp /tmp/XXXXXX_directory_structure_${backup_dir_path_without_slash})
+    find $backup_dir_path "*${backup_files_extension}" > $directory_structure_file
+    selectS3ServiceAndSend $directory_structure_file
+    rm -f $directory_structure_file 
+    
+    # upload all files
+  done
 }
 
 testBackupDefaultDir()
