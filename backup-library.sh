@@ -64,7 +64,7 @@ createAndSendVestacpBackup()
 {
   for vestacp_account in $vestacp_accounts
   do
-    backup_file_path=$(/usr/local/vesta/bin/v-backup-user admin | egrep Local | awk '{print $4}')
+    backup_file_path=$(/usr/local/vesta/bin/v-backup-user $vestacp_account | egrep Local | awk '{print $4}')
     selectS3ServiceAndSend $backup_file_path
   done
 }
@@ -74,7 +74,7 @@ createAndSendHestiacpBackup()
 {
   for hestiacp_account in $hestiacp_accounts
   do
-    backup_file_path=$(/usr/local/hestia/bin/v-backup-user admin | egrep Local | awk '{print $4}')
+    backup_file_path=$(/usr/local/hestia/bin/v-backup-user $hestiacp_account | egrep Local | awk '{print $4}')
     selectS3ServiceAndSend $backup_file_path
   done
 }
