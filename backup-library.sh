@@ -234,9 +234,28 @@ testBackupDefaultDir()
   fi
 }
 
+testBinary()
+{
+  command -v "$1" >/dev/null 2>&1
+}
+
+checkRequiredPackages()
+{
+  packages_list="jq"
+  for package_name in $packages_list
+  do
+    if ! testBinary $package_name
+    then
+      echo "Package >>> $package_name <<< not installed. Aborting..."
+      exit 1
+    fi
+  done
+}
+
 main()
 {
   testRootPermission
+  checkRequiredPackages
   testBackupDefaultDir
  
   # go to the provided dir to create temp files, if they are needed 
