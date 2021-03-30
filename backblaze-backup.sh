@@ -17,9 +17,11 @@ backup_directory=
 backup_directories_list=
 backup_accounts_status=
 backup_bucket_name=
+backup_procedure_name=
 hestiacp_accounts=
 vestacp_accounts=
 cyberpanel_websites=
+cpanel_accounts=
 
 # process the vars
 case $backup_type in
@@ -31,7 +33,7 @@ case $backup_type in
     backup_remove=$4
     backup_accounts_status=$5
     backup_service_name=$6
-    cyberpanelBackup
+    backup_procedure_name=cyberpanelBackup
   ;;
 
   2)
@@ -43,7 +45,7 @@ case $backup_type in
     backup_accounts_status=$5
     backup_service_name=$6
     backup_dir=$7
-    vestacpBackup
+    backup_procedure_name=vestacpBackup
   ;;
 
   3)
@@ -55,7 +57,7 @@ case $backup_type in
     backup_accounts_status=$5
     backup_service_name=$6
     backup_dir=$7
-    hestiacpBackup
+    backup_procedure_name=hestiacpBackup
   ;;
 
   4)
@@ -67,7 +69,7 @@ case $backup_type in
     backup_accounts_status=$5
     backup_service_name=$6
     backup_dir=$7
-    cpanelBackup
+    backup_procedure_name=cpanelBackup
   ;;
 
   5)
@@ -76,7 +78,7 @@ case $backup_type in
     backup_service_name=$2
     backup_bucket_name=$3
     backup_file=$4
-    fileBackup
+    backup_procedure_name=fileBackup
   ;;
 
   6)
@@ -84,7 +86,7 @@ case $backup_type in
     backup_bucket_name=$3
     shift 3
     backup_files_list=$@
-    filesBackup
+    backup_procedure_name=filesBackup
   ;;
 
   7)
@@ -93,7 +95,7 @@ case $backup_type in
     backup_service_name=$2
     backup_bucket_name=$3
     backup_directory=$4
-    directoryBackup
+    backup_procedure_name=directoryBackup
   ;;
 
   8)
@@ -101,7 +103,7 @@ case $backup_type in
     backup_bucket_name=$3
     shift 3
     backup_directories_list=$@
-    directoriesBackup
+    backup_procedure_name=directoriesBackup
   ;;
 
   9)
@@ -110,7 +112,7 @@ case $backup_type in
     backup_service_name=$2
     backup_bucket_name=$2
     backup_directory=$3
-    directoryBackupCompressed
+    backup_procedure_name=directoryBackupCompressed
   ;;
 
   10)
@@ -118,7 +120,7 @@ case $backup_type in
     backup_bucket_name=$3
     shift 3
     backup_directories_list=$@
-    directoriesBackupCompressed
+    backup_procedure_name=directoriesBackupCompressed
   ;;
 
   *)

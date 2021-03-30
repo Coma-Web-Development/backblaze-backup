@@ -348,31 +348,8 @@ main()
   # go to the provided dir to create temp files, if they are needed 
   cd $backup_dir
 
-  case $backup_type in
-    hestiacp)
-      hestiacpBackup
-      ;;
-    vestacp)
-      vestacpBackup
-      ;;
-    cyberpanel)
-      cyberpanelBackup
-      ;;
-    *)
-        # test if all directories are valid
-        for dir_test in $backup_type
-        do
-          if [ ! -d $dir_test ]
-          then
-            log ERROR "Directory or directories given: >>> $backup_type <<<. The directory >>> $dir_test <<< is not valid. Aborting with return code >>> 3 <<<."
-            exit 3
-          fi
-        done
-
-        # if they are valid, continue
-        directoriesBackup
-      ;;
-  esac
+  # execute the backup procedure
+  $backup_procedure_name
 
   exit 0
 }
