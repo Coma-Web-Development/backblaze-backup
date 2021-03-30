@@ -174,6 +174,42 @@ cpanelBackup()
   exit 0
 }
 
+fileBackup()
+{
+  # TODO
+  exit 0
+}
+
+filesBackup()
+{
+  # TODO
+  exit 0
+}
+
+directoryBackup()
+{
+  # TODO
+  exit 0
+}
+
+directoriesBackup()
+{
+  # TODO
+  exit 0
+}
+
+directoryBackupCompressed()
+{
+  # TODO
+  exit 0
+}
+
+directoriesBackupCompressed()
+{
+  # TODO
+  exit 0
+}
+
 hestiacpBackup()
 {
   # check if there is a hestia script
