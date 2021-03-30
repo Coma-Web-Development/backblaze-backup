@@ -335,8 +335,8 @@ logInvalidParametersNumber()
   if [[ $parameters_count -ne $parameters_count_expected ]]
   then
     log ERROR "Invalid parameters number. Exepected: >>> $parameters_count_expected <<<. Given: >>> $parameters_count <<<. Aborting with return code >>> 1 <<<."
-  fi
   exit 1
+  fi
 }
 
 main()
