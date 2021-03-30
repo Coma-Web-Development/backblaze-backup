@@ -168,6 +168,12 @@ getActiveUsersCyberpanel()
   cyberpanel_websites=$(/usr/bin/cyberpanel listWebsitesJson | jq -r 'fromjson[] | select(.state=="Active") | .domain')
 }
 
+cpanelBackup()
+{
+  # TODO
+  exit 0
+}
+
 hestiacpBackup()
 {
   # check if there is a hestia script
