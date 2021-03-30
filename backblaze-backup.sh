@@ -69,7 +69,7 @@ case $backup_type in
   ;;
 
   5)
-    parameters_count_expected=6
+    parameters_count_expected=5
     logInvalidParametersNumber
     backup_service_name=$2
     backup_bucket_name=$3
