@@ -176,8 +176,7 @@ cpanelBackup()
 
 fileBackup()
 {
-  # TODO
-  exit 0
+  selectS3ServiceAndSend $backup_file
 }
 
 filesBackup()
