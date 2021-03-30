@@ -126,11 +126,6 @@ case $backup_type in
   ;;
 esac
 
-if [[ $parameters_count -ne $parameters_count_expected ]]
-then
-  exit 2
-fi
-
 main
 
 # unknown error
