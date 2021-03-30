@@ -27,46 +27,46 @@ case $backup_type in
   1)
     parameters_count_expected=5
     logInvalidParametersNumber
-    backup_remove=$2
-    backup_accounts_status=$3
-    backup_service_name=$4
+    backup_remove=$3
+    backup_accounts_status=$4
+    backup_service_name=$5
     cyberpanelBackup
   ;;
 
   2)
     parameters_count_expected=6
     logInvalidParametersNumber
-    backup_remove=$2
-    backup_accounts_status=$3
-    backup_service_name=$4
-    backup_dir=$5
+    backup_remove=$3
+    backup_accounts_status=$4
+    backup_service_name=$5
+    backup_dir=$6
     vestacpBackup
   ;;
 
   3)
     parameters_count_expected=6
     logInvalidParametersNumber
-    backup_remove=$2
-    backup_accounts_status=$3
-    backup_service_name=$4
-    backup_dir=$5
+    backup_remove=$3
+    backup_accounts_status=$4
+    backup_service_name=$5
+    backup_dir=$6
     hestiacpBackup
   ;;
 
   4)
     parameters_count_expected=6
     logInvalidParametersNumber
-    backup_remove=$2
-    backup_accounts_status=$3
-    backup_service_name=$4
-    backup_dir=$5
+    backup_remove=$3
+    backup_accounts_status=$4
+    backup_service_name=$5
+    backup_dir=$6
     cpanelBackup
   ;;
 
   5)
     parameters_count_expected=3
     logInvalidParametersNumber
-    backup_file=$2
+    backup_file=$3
     fileBackup
   ;;
 
@@ -79,7 +79,7 @@ case $backup_type in
   7)
     parameters_count_expected=3
     logInvalidParametersNumber
-    backup_directory=$2
+    backup_directory=$3
     directoryBackup
   ;;
 
@@ -92,7 +92,7 @@ case $backup_type in
   9)
     parameters_count_expected=3
     logInvalidParametersNumber
-    backup_directory=$2
+    backup_directory=$3
     directoryBackupCompressed
   ;;
 
