@@ -67,7 +67,7 @@ case $backup_type in
   ;;
 
   5)
-    parameters_count_expected=3
+    parameters_count_expected=4
     logInvalidParametersNumber
     backup_service_name=$2
     backup_file=$3
@@ -82,7 +82,7 @@ case $backup_type in
   ;;
 
   7)
-    parameters_count_expected=3
+    parameters_count_expected=4
     logInvalidParametersNumber
     backup_service_name=$2
     backup_directory=$3
@@ -97,7 +97,7 @@ case $backup_type in
   ;;
 
   9)
-    parameters_count_expected=3
+    parameters_count_expected=4
     logInvalidParametersNumber
     backup_service_name=$2
     backup_directory=$3
