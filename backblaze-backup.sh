@@ -32,7 +32,6 @@ case $backup_type in
     backup_bucket_name=$3
     backup_remove=$4
     backup_accounts_status=$5
-    backup_service_name=$6
     backup_procedure_name=cyberpanelBackup
   ;;
 
@@ -43,8 +42,7 @@ case $backup_type in
     backup_bucket_name=$3
     backup_remove=$4
     backup_accounts_status=$5
-    backup_service_name=$6
-    backup_dir=$7
+    backup_dir=$6
     backup_procedure_name=vestacpBackup
   ;;
 
@@ -55,8 +53,7 @@ case $backup_type in
     backup_bucket_name=$3
     backup_remove=$4
     backup_accounts_status=$5
-    backup_service_name=$6
-    backup_dir=$7
+    backup_dir=$6
     backup_procedure_name=hestiacpBackup
   ;;
 
@@ -67,58 +64,63 @@ case $backup_type in
     backup_bucket_name=$3
     backup_remove=$4
     backup_accounts_status=$5
-    backup_service_name=$6
-    backup_dir=$7
+    backup_dir=$6
     backup_procedure_name=cpanelBackup
   ;;
 
   5)
-    parameters_count_expected=4
+    parameters_count_expected=6
     logInvalidParametersNumber
     backup_service_name=$2
     backup_bucket_name=$3
-    backup_file=$4
+    backup_remove=$4
+    backup_file=$5
     backup_procedure_name=fileBackup
   ;;
 
   6)
     backup_service_name=$2
     backup_bucket_name=$3
-    shift 3
+    backup_remove=$4
+    shift 4
     backup_files_list=$@
     backup_procedure_name=filesBackup
   ;;
 
   7)
-    parameters_count_expected=4
+    parameters_count_expected=6
     logInvalidParametersNumber
     backup_service_name=$2
     backup_bucket_name=$3
-    backup_directory=$4
+    backup_remove=$4
+    backup_directory=$5
     backup_procedure_name=directoryBackup
   ;;
 
   8)
     backup_service_name=$2
     backup_bucket_name=$3
-    shift 3
+    backup_remove=$3
+    shift 4
     backup_directories_list=$@
     backup_procedure_name=directoriesBackup
   ;;
 
   9)
-    parameters_count_expected=4
+    parameters_count_expected=6
     logInvalidParametersNumber
     backup_service_name=$2
-    backup_bucket_name=$2
-    backup_directory=$3
+    backup_bucket_name=$3
+    backup_remove=$4
+    backup_directory=$5
     backup_procedure_name=directoryBackupCompressed
   ;;
 
   10)
     backup_service_name=$2
     backup_bucket_name=$3
-    shift 3
+    backup_remove=$4
+    shift 4
     backup_directories_list=$@
     backup_procedure_name=directoriesBackupCompressed
   ;;
