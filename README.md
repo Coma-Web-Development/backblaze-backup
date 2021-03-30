@@ -14,6 +14,7 @@ If you do not want to use any hosting panel schema, we will also provide a way t
 | hestiacp backup | DONE |
 | vestacp backup | DONE |
 | cyberpanel backup | DONE |
+| cpanel backup | TO DO |
 | multiple extensions | TO DO |
 | log to audit the backup | DONE |
 | zabbix notification script | TO DO |
@@ -21,6 +22,10 @@ If you do not want to use any hosting panel schema, we will also provide a way t
 | upgrade blackbaze binary script | DONE |
 | script to remove backblaze setup | DONE |
 | how to create crontab | DONE |
+| single directory backup | TO DO |
+| multiple directories backup | TO DO |
+| single file backup | TO DO |
+| multiple files backup | TO DO |
 
 # how to install
 1. Execute the installer. It will install the latest stable and official backblaze binary for Linux x85_64
@@ -95,73 +100,108 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 | 2 | active | create and send backup of all accounts, except suspended accounts |
 | 3 | bucketname | the name of the s3 bucket |
 
-### parameter 1
-Provide which kind of environment you have.
+### codeID: 2
+```bash
+/usr/bin/backblaze-backup.sh 2 parameter1 parameter2 parameter3 parameter4
+```
 
-The options are:
-- hestiacp
-- vestacp
-- cyberpanel
-- "/absolut/path/directory1 /absolut/path/directory2 /absolut/path/directory3 ... /absolut/path/directoryN"
+| Parameter number | options | what this mean |
+| --- | --- | --- |
+| 1 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 1 | notReMoveAfterSent | do not remove the files after send |
+| 2 | all | create and send backup of all accounts |
+| 2 | active | create and send backup of all accounts, except suspended accounts |
+| 3 | bucketname | the name of the s3 bucket |
+| 4 | directory | which directory the temp files and the final backup will be stored |
 
-Notes:
-- If you provide a list of directories instead of hosting panel, please separate them using spaces and do not remove the double quotes or they will fail. The quotes will make all directories as only one parameter, the parameter 1.
-- The directory path must be absolut.
+### codeID 3
+```bash
+/usr/bin/backblaze-backup.sh 3 parameter1 parameter2 parameter3 parameter4
+```
 
-### parameter 2
-Do you want to remove the backup after it was successfully sent to BackBlaze?
+| Parameter number | options | what this mean |
+| --- | --- | --- |
+| 1 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 1 | notReMoveAfterSent | do not remove the files after send |
+| 2 | all | create and send backup of all accounts |
+| 2 | active | create and send backup of all accounts, except suspended accounts |
+| 3 | bucketname | the name of the s3 bucket |
+| 4 | directory | which directory the temp files and the final backup will be stored |
 
-The options are:
-- yesRemoveAfterSent
-- notReMoveAfterSent
+### codeID 4
+```bash
+/usr/bin/backblaze-backup.sh 4 parameter1 parameter2 parameter3 parameter4
+```
 
-### parameter 3
-By default the script will try to use /backup to create hosting panel backup temp files to send them. Some panels allow to specify a directory to create the temp files. If you want to provide a specific directory, you need to provide the custom directory as the parameter 3. This can help when you does not have enough space in the / (root) to create backups.
+| Parameter number | options | what this mean |
+| --- | --- | --- |
+| 1 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 1 | notReMoveAfterSent | do not remove the files after send |
+| 2 | all | create and send backup of all accounts |
+| 2 | active | create and send backup of all accounts, except suspended accounts |
+| 3 | bucketname | the name of the s3 bucket |
+| 4 | directory | which directory the temp files and the final backup will be stored |
 
-Notes:
-- If the hosting panel does not provide this possibility, the /backup will be used.
-- If you provide a custom directory, this script will not try to create if it not exist. Please guarante that the directory exist or the script will abort.
-- You can provide multiple directories. Make sure they are separated by spaces and do not remove the double quotes.
-- The directory path must be absolut.
-- Multiple directories does not make sense here.
+### codeID 5
+```bash
+/usr/bin/backblaze-backup.sh 5 parameter1 file1
+```
 
-The options are:
-- default
-- /absolut/path/directory1
+| Parameter number | options | what this mean |
+| --- | --- | --- |
+| 1 | bucketname | the name of the s3 bucket |
+| 2 | file | absolut path of the filename |
+
+### codeID 6
+```bash
+/usr/bin/backblaze-backup.sh 6 parameter1 file1 file2 file3 filen
+```
+
+| Parameter number | options | what this mean |
+| --- | --- | --- |
+| 1 | bucketname | the name of the s3 bucket |
+| 2...n | files | absolut path of the files |
+
+### codeID 7
+```bash
+/usr/bin/backblaze-backup.sh 7 parameter1 directory1
+```
+
+| Parameter number | options | what this mean |
+| --- | --- | --- |
+| 1 | bucketname | the name of the s3 bucket |
+| 2 | directory | absolut path of the directory |
+
+### codeID 8
+```bash
+/usr/bin/backblaze-backup.sh 8 parameter1 directory1 directory2 directory3 directoryn
+```
+
+| Parameter number | options | what this mean |
+| --- | --- | --- |
+| 1 | bucketname | the name of the s3 bucket |
+| 2...n | directories | absolut path of the directories |
 
 
-### parameter 4
-Do you want just backup files with specific extension? If yes, then this is the parameter to be configured. The default option will find for every file extension.
+### codeID 9
+```bash
+/usr/bin/backblaze-backup.sh 9 parameter1 directory1
+```
 
-The options are:
-- default
-- .extension
+| Parameter number | options | what this mean |
+| --- | --- | --- |
+| 1 | bucketname | the name of the s3 bucket |
+| 2 | directory | absolut path of the directory |
 
-Extensions example:
-- .tar.gz
-- .bz2
-- .tar
-- .zip
+### codeID 10
+```bash
+/usr/bin/backblaze-backup.sh 10 parameter1 directory1 directory2 directory3 directoryn
+```
 
-Notes:
-- You can use any extension that you want.
-- Make sure it start with the dot (".zip" and not just "zip").
-- At the moment this script not provide implementation for multiple extensions.
-
-### parameter 5
-This parameter you can control which accounts will be copied to BackBlaze.
-If you will just provide directories to send the files, please choose the "none" option. If you provide a hosting panel option in the parameter 1, then please choose if you want create and copy backups of all acounts or just active accounts (suspended accounts will not be copied).
-
-The options are:
-- none
-- all
-- active
-
-### parameter 6
-Provide the BackBlaze bucket name. Please garantee that the name is correct. The name is case sensitive, so be sure about the buck name.
-
-The options are:
-- bucketname
+| Parameter number | options | what this mean |
+| --- | --- | --- |
+| 1 | bucketname | the name of the s3 bucket |
+| 2...n | directories | absolut path of the directories |
 
 
 # How to add to cronjob
@@ -191,26 +231,3 @@ More crontab configuration info/tips:
 - https://en.wikipedia.org/wiki/Cron
 - https://crontab.guru/
 - https://cron.help/
-
-# Examples
-## cyberpanel (example 1)
-1. "cyberpanel": cyberpanel server
-2. "yesRemoveAfterSent": Remove backup after send
-3. "default": cyberpanel does not allow to choose the directory destiny
-4. "default": does not matter, will be .tar.gz always
-5. "all": active and suspended accounts
-6. "myserver-backup": s3 bucket name
-```bash
-/usr/bin/backblaze-backup.sh cyberpanel yesRemoveAfterSent default default all myserver-backup
-```
-
-## Hestiacp (example 2)
-1. "hestiacp": hestiacp server
-2. "yesRemoveAfterSent": Remove backup after send
-3. "/backup": The directory used to save the backups
-4. "default": does not matter, will be .tar.gz always
-5. "all": active and suspended accounts
-6. "mybucket": s3 bucket name
-```bash
-0 4 * * * /usr/bin/backblaze-backup.sh hestiacp yesRemoveAfterSent /backup default all mybucket
-```
