@@ -17,7 +17,6 @@ backup_directory=
 backup_directories_list=
 backup_accounts_status=
 backup_bucket_name=
-backup_service_name=backblaze
 hestiacp_accounts=
 vestacp_accounts=
 cyberpanel_websites=
@@ -27,6 +26,7 @@ case $backup_type in
   1)
     parameters_count_expected=5
     logInvalidParametersNumber
+    backup_service_name=$2
     backup_remove=$3
     backup_accounts_status=$4
     backup_service_name=$5
@@ -36,6 +36,7 @@ case $backup_type in
   2)
     parameters_count_expected=6
     logInvalidParametersNumber
+    backup_service_name=$2
     backup_remove=$3
     backup_accounts_status=$4
     backup_service_name=$5
@@ -46,6 +47,7 @@ case $backup_type in
   3)
     parameters_count_expected=6
     logInvalidParametersNumber
+    backup_service_name=$2
     backup_remove=$3
     backup_accounts_status=$4
     backup_service_name=$5
@@ -56,6 +58,7 @@ case $backup_type in
   4)
     parameters_count_expected=6
     logInvalidParametersNumber
+    backup_service_name=$2
     backup_remove=$3
     backup_accounts_status=$4
     backup_service_name=$5
@@ -66,11 +69,13 @@ case $backup_type in
   5)
     parameters_count_expected=3
     logInvalidParametersNumber
+    backup_service_name=$2
     backup_file=$3
     fileBackup
   ;;
 
   6)
+    backup_service_name=$2
     shift 2
     backup_files_list=$@
     filesBackup
@@ -79,11 +84,13 @@ case $backup_type in
   7)
     parameters_count_expected=3
     logInvalidParametersNumber
+    backup_service_name=$2
     backup_directory=$3
     directoryBackup
   ;;
 
   8)
+    backup_service_name=$2
     shift 2
     backup_directories_list=$@
     directoriesBackup
@@ -92,11 +99,13 @@ case $backup_type in
   9)
     parameters_count_expected=3
     logInvalidParametersNumber
+    backup_service_name=$2
     backup_directory=$3
     directoryBackupCompressed
   ;;
 
   10)
+    backup_service_name=$2
     shift 2
     backup_directories_list=$@
     directoriesBackupCompressed
