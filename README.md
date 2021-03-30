@@ -159,6 +159,15 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 | 3 | notReMoveAfterSent | do not remove the files after send |
 | 4 | file | absolut path of the filename |
 
+Example:
+```bash
+/usr/bin/backblaze-backup.sh 5 backblaze mybucketname yesRemoveAfterSent /home/backup/skyblock.tar.gz
+```
+- "5": single file
+- "backblaze" : s3 service that will be used
+- "mybucketname" : the bucketname
+- "yesRemoveAfterSent" : the file will be removed after send
+- "/home/backup/myfile.tar.gz" : the file absolut path
 ### codeID 6
 ```bash
 /usr/bin/backblaze-backup.sh 6 parameter1 file1 file2 file3 filen
