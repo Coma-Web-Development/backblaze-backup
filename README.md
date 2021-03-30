@@ -55,14 +55,45 @@ Backblaze example:
 ```
 
 # backblaze-backup.sh parameters explained
-- The script backblaze-backup need some parameters to understand what you want to do.
-- All of them are mandatory, you can not skip anyone.
-- After you create and test your backup, you can create a cronjob under root credentials.
+- The script backblaze-backup need some parameters to understand what you want to do
+- the first parameter is the code that identify the backup method that you want (directory, file, compressed files, vestacp panel, cyberpanel, hestiacp panel etc)
+- All parameters are mandatory
+- After you create and test your backup, you can create a cronjob under root credentials to automatically execute the backup
 
 Generic use of the script:
 ```bash
-/usr/bin/bash /usr/bin/backblaze-backup.sh parameter1 parameter2 parameter3 parameter4 etc
+/usr/bin/bash /usr/bin/backblaze-backup.sh codeID parameter1 parameter2 parameter3 parameter4 etc
 ```
+
+## codeID
+The code will identify which kind of backup you want. Maybe you need to just send a file or one directory or more than one directory. Maybe you want to send cyberpanel (web panel) backups or maybe the vestacp backups. This codeID will identify what type the backup do you want and based on this codeID you will give the right parameters. 
+
+| codeID | backup type |
+| --- | --- |
+| 1 | cyberpanel backups |
+| 2 | vestacp backups |
+| 3 | hestiacp backups |
+| 4 | cpanel backups |
+| 5 | single file |
+| 6 | multiple files |
+| 7 | single directory: find the files and send  |
+| 8 | multiples directories: find the files and send |
+| 9 | single directory: create tar, compress and send |
+| 10 | multiples directories: create tar, compress and send |
+
+### codeID: 1
+
+```bash
+/usr/bin/backblaze-backup.sh 1 parameter1 parameter2 parameter3
+```
+
+| Parameter number | options | what this mean |
+| --- | --- | --- |
+| 1 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 1 | notReMoveAfterSent | do not remove the files after send |
+| 2 | all | create and send backup of all accounts |
+| 2 | active | create and send backup of all accounts, except suspended accounts |
+| 3 | bucketname | the name of the s3 bucket |
 
 ### parameter 1
 Provide which kind of environment you have.
