@@ -24,45 +24,49 @@ cyberpanel_websites=
 # process the vars
 case $backup_type in
   1)
-    parameters_count_expected=5
+    parameters_count_expected=6
     logInvalidParametersNumber
     backup_service_name=$2
-    backup_remove=$3
-    backup_accounts_status=$4
-    backup_service_name=$5
+    backup_bucket_name=$3
+    backup_remove=$4
+    backup_accounts_status=$5
+    backup_service_name=$6
     cyberpanelBackup
   ;;
 
   2)
-    parameters_count_expected=6
+    parameters_count_expected=7
     logInvalidParametersNumber
     backup_service_name=$2
-    backup_remove=$3
-    backup_accounts_status=$4
-    backup_service_name=$5
-    backup_dir=$6
+    backup_bucket_name=$3
+    backup_remove=$4
+    backup_accounts_status=$5
+    backup_service_name=$6
+    backup_dir=$7
     vestacpBackup
   ;;
 
   3)
-    parameters_count_expected=6
+    parameters_count_expected=7
     logInvalidParametersNumber
     backup_service_name=$2
-    backup_remove=$3
-    backup_accounts_status=$4
-    backup_service_name=$5
-    backup_dir=$6
+    backup_bucket_name=$3
+    backup_remove=$4
+    backup_accounts_status=$5
+    backup_service_name=$6
+    backup_dir=$7
     hestiacpBackup
   ;;
 
   4)
-    parameters_count_expected=6
+    parameters_count_expected=7
     logInvalidParametersNumber
     backup_service_name=$2
-    backup_remove=$3
-    backup_accounts_status=$4
-    backup_service_name=$5
-    backup_dir=$6
+    backup_bucket_name=$3
+    backup_remove=$4
+    backup_accounts_status=$5
+    backup_service_name=$6
+    backup_dir=$7
     cpanelBackup
   ;;
 
@@ -70,13 +74,15 @@ case $backup_type in
     parameters_count_expected=4
     logInvalidParametersNumber
     backup_service_name=$2
-    backup_file=$3
+    backup_bucket_name=$3
+    backup_file=$4
     fileBackup
   ;;
 
   6)
     backup_service_name=$2
-    shift 2
+    backup_bucket_name=$3
+    shift 3
     backup_files_list=$@
     filesBackup
   ;;
@@ -85,13 +91,15 @@ case $backup_type in
     parameters_count_expected=4
     logInvalidParametersNumber
     backup_service_name=$2
-    backup_directory=$3
+    backup_bucket_name=$3
+    backup_directory=$4
     directoryBackup
   ;;
 
   8)
     backup_service_name=$2
-    shift 2
+    backup_bucket_name=$3
+    shift 3
     backup_directories_list=$@
     directoriesBackup
   ;;
@@ -100,13 +108,15 @@ case $backup_type in
     parameters_count_expected=4
     logInvalidParametersNumber
     backup_service_name=$2
+    backup_bucket_name=$2
     backup_directory=$3
     directoryBackupCompressed
   ;;
 
   10)
     backup_service_name=$2
-    shift 2
+    backup_bucket_name=$3
+    shift 3
     backup_directories_list=$@
     directoriesBackupCompressed
   ;;
