@@ -25,7 +25,7 @@ cyberpanel_websites=
 # process the vars
 case $backup_type in
   1)
-    parameters_count_expected=4
+    parameters_count_expected=5
     logInvalidParametersNumber
     backup_remove=$2
     backup_accounts_status=$3
@@ -34,7 +34,7 @@ case $backup_type in
   ;;
 
   2)
-    parameters_count_expected=5
+    parameters_count_expected=6
     logInvalidParametersNumber
     backup_remove=$2
     backup_accounts_status=$3
@@ -44,7 +44,7 @@ case $backup_type in
   ;;
 
   3)
-    parameters_count_expected=5
+    parameters_count_expected=6
     logInvalidParametersNumber
     backup_remove=$2
     backup_accounts_status=$3
@@ -54,7 +54,7 @@ case $backup_type in
   ;;
 
   4)
-    parameters_count_expected=5
+    parameters_count_expected=6
     logInvalidParametersNumber
     backup_remove=$2
     backup_accounts_status=$3
@@ -64,40 +64,40 @@ case $backup_type in
   ;;
 
   5)
-    parameters_count_expected=2
+    parameters_count_expected=3
     logInvalidParametersNumber
     backup_file=$2
     fileBackup
   ;;
 
   6)
-    shift 1
+    shift 2
     backup_files_list=$@
     filesBackup
   ;;
 
   7)
-    parameters_count_expected=2
+    parameters_count_expected=3
     logInvalidParametersNumber
     backup_directory=$2
     directoryBackup
   ;;
 
   8)
-    shift 1
+    shift 2
     backup_directories_list=$@
     directoriesBackup
   ;;
 
   9)
-    parameters_count_expected=2
+    parameters_count_expected=3
     logInvalidParametersNumber
     backup_directory=$2
     directoryBackupCompressed
   ;;
 
   10)
-    shift 1
+    shift 2
     backup_directories_list=$@
     directoriesBackupCompressed
   ;;

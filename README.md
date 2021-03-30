@@ -94,11 +94,12 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | yesRemoveAfterSent | remove the files after successfully send the backup |
-| 1 | notReMoveAfterSent | do not remove the files after send |
-| 2 | all | create and send backup of all accounts |
-| 2 | active | create and send backup of all accounts, except suspended accounts |
-| 3 | bucketname | the name of the s3 bucket |
+| 1 | bacbklaze | which s3 service will be used |
+| 2 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 2 | notReMoveAfterSent | do not remove the files after send |
+| 3 | all | create and send backup of all accounts |
+| 3 | active | create and send backup of all accounts, except suspended accounts |
+| 4 | bucketname | the name of the s3 bucket |
 
 ### codeID: 2
 ```bash
@@ -107,12 +108,13 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | yesRemoveAfterSent | remove the files after successfully send the backup |
-| 1 | notReMoveAfterSent | do not remove the files after send |
-| 2 | all | create and send backup of all accounts |
-| 2 | active | create and send backup of all accounts, except suspended accounts |
-| 3 | bucketname | the name of the s3 bucket |
-| 4 | directory | which directory the temp files and the final backup will be stored |
+| 1 | bacbklaze | which s3 service will be used |
+| 2 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 2 | notReMoveAfterSent | do not remove the files after send |
+| 3 | all | create and send backup of all accounts |
+| 3 | active | create and send backup of all accounts, except suspended accounts |
+| 4 | bucketname | the name of the s3 bucket |
+| 5 | directory | which directory the temp files and the final backup will be stored |
 
 ### codeID 3
 ```bash
@@ -121,12 +123,13 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | yesRemoveAfterSent | remove the files after successfully send the backup |
-| 1 | notReMoveAfterSent | do not remove the files after send |
-| 2 | all | create and send backup of all accounts |
-| 2 | active | create and send backup of all accounts, except suspended accounts |
-| 3 | bucketname | the name of the s3 bucket |
-| 4 | directory | which directory the temp files and the final backup will be stored |
+| 1 | bacbklaze | which s3 service will be used |
+| 2 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 2 | notReMoveAfterSent | do not remove the files after send |
+| 3 | all | create and send backup of all accounts |
+| 3 | active | create and send backup of all accounts, except suspended accounts |
+| 4 | bucketname | the name of the s3 bucket |
+| 5 | directory | which directory the temp files and the final backup will be stored |
 
 ### codeID 4
 ```bash
@@ -135,12 +138,13 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | yesRemoveAfterSent | remove the files after successfully send the backup |
-| 1 | notReMoveAfterSent | do not remove the files after send |
-| 2 | all | create and send backup of all accounts |
-| 2 | active | create and send backup of all accounts, except suspended accounts |
-| 3 | bucketname | the name of the s3 bucket |
-| 4 | directory | which directory the temp files and the final backup will be stored |
+| 1 | bacbklaze | which s3 service will be used |
+| 2 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 2 | notReMoveAfterSent | do not remove the files after send |
+| 3 | all | create and send backup of all accounts |
+| 4 | active | create and send backup of all accounts, except suspended accounts |
+| 4 | bucketname | the name of the s3 bucket |
+| 5 | directory | which directory the temp files and the final backup will be stored |
 
 ### codeID 5
 ```bash
@@ -149,8 +153,9 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bucketname | the name of the s3 bucket |
-| 2 | file | absolut path of the filename |
+| 1 | bacbklaze | which s3 service will be used |
+| 2 | bucketname | the name of the s3 bucket |
+| 3 | file | absolut path of the filename |
 
 ### codeID 6
 ```bash
@@ -159,8 +164,9 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bucketname | the name of the s3 bucket |
-| 2...n | files | absolut path of the files |
+| 1 | bacbklaze | which s3 service will be used |
+| 2 | bucketname | the name of the s3 bucket |
+| 3...n | files | absolut path of the files |
 
 ### codeID 7
 ```bash
@@ -169,8 +175,9 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bucketname | the name of the s3 bucket |
-| 2 | directory | absolut path of the directory |
+| 1 | bacbklaze | which s3 service will be used |
+| 2 | bucketname | the name of the s3 bucket |
+| 3 | directory | absolut path of the directory |
 
 ### codeID 8
 ```bash
@@ -179,8 +186,9 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bucketname | the name of the s3 bucket |
-| 2...n | directories | absolut path of the directories |
+| 1 | bacbklaze | which s3 service will be used |
+| 2 | bucketname | the name of the s3 bucket |
+| 3...n | directories | absolut path of the directories |
 
 
 ### codeID 9
@@ -190,8 +198,9 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bucketname | the name of the s3 bucket |
-| 2 | directory | absolut path of the directory |
+| 1 | bacbklaze | which s3 service will be used |
+| 2 | bucketname | the name of the s3 bucket |
+| 3 | directory | absolut path of the directory |
 
 ### codeID 10
 ```bash
@@ -200,8 +209,9 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bucketname | the name of the s3 bucket |
-| 2...n | directories | absolut path of the directories |
+| 1 | bacbklaze | which s3 service will be used |
+| 2 | bucketname | the name of the s3 bucket |
+| 3...n | directories | absolut path of the directories |
 
 
 # How to add to cronjob
