@@ -161,7 +161,7 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 
 Example:
 ```bash
-/usr/bin/backblaze-backup.sh 5 backblaze mybucketname yesRemoveAfterSent /home/backup/skyblock.tar.gz
+/usr/bin/backblaze-backup.sh 5 backblaze mybucketname yesRemoveAfterSent /home/backup/myfile.tar.gz
 ```
 - "5": single file
 - "backblaze" : s3 service that will be used
