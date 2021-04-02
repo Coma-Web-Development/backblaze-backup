@@ -128,18 +128,31 @@ Example:
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bacbklaze | which s3 service will be used |
-| 2 | yesRemoveAfterSent | remove the files after successfully send the backup |
-| 2 | notReMoveAfterSent | do not remove the files after send |
-| 3 | all | create and send backup of all accounts |
-| 3 | active | create and send backup of all accounts, except suspended accounts |
-| 4 | bucketname | the name of the s3 bucket |
-| 5 | directory | which directory the temp files and the final backup will be stored |
+| 1 | 2 | vestacp codeID  | 
+| 2 | bacbklaze | which s3 service will be used |
+| 3 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 3 | notReMoveAfterSent | do not remove the files after send |
+| 4 | all | create and send backup of all accounts |
+| 5 | active | create and send backup of all accounts, except suspended accounts |
+| 5 | bucketname | the name of the s3 bucket |
+| 6 | directory | which directory the temp files and the final backup will be stored |
+
+Example:
+```bash
+/usr/bin/backblaze-backup.sh 2 backblaze yesRemoveAfterSent all mybucketname /path/to/store/tmp/files/
+```
+- "2": vestacp backup method
+- "backblaze" : s3 service that will be used
+- "yesRemoveAfterSent" : the file will be removed after send
+- "all" : create and send backup of all accounts
+- "mybucketname" : the bucketname
+- "/path/to/store/tmp/files/" : path to store the temp files OR path to store the backup files if you will not remove them after sent
 
 ### codeID 3
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
+| 1 | 1 | hestiacp codeID |
 | 1 | bacbklaze | which s3 service will be used |
 | 2 | yesRemoveAfterSent | remove the files after successfully send the backup |
 | 2 | notReMoveAfterSent | do not remove the files after send |
@@ -147,6 +160,18 @@ Example:
 | 3 | active | create and send backup of all accounts, except suspended accounts |
 | 4 | bucketname | the name of the s3 bucket |
 | 5 | directory | which directory the temp files and the final backup will be stored |
+
+Example:
+```bash
+/usr/bin/backblaze-backup.sh 3 backblaze yesRemoveAfterSent all mybucketname /path/to/store/tmp/files/
+```
+- "3": hestiacp backup method
+- "backblaze" : s3 service that will be used
+- "yesRemoveAfterSent" : the file will be removed after send
+- "all" : create and send backup of all accounts
+- "mybucketname" : the bucketname
+- "/path/to/store/tmp/files/" : path to store the temp files OR path to store the backup files if you will not remove them after sent
+
 
 ### codeID 4
 
