@@ -24,8 +24,10 @@ If you do not want to use any hosting panel schema, we will also provide a way t
 | how to create crontab | DONE |
 | single directory backup | TO DO |
 | multiple directories backup | TO DO |
-| single file backup | TO DO |
+| single file backup | DONE |
 | multiple files backup | TO DO |
+| nextcloud backup | TO DO |
+| rocketchat backup | TO DO |
 
 # how to install
 1. Execute the installer. It will install the latest stable and official backblaze binary for Linux x85_64
@@ -85,26 +87,44 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 | 8 | multiples directories: find the files and send |
 | 9 | single directory: create tar, compress and send |
 | 10 | multiples directories: create tar, compress and send |
+| 11 | nextcloud instance backup |
+| 12 | rocketchat instance backup |
+
+### general script all
+
+The basic script call will have this standard:
+
+```bash
+/usr/bin/backblaze-backup.sh parameter1 parameter2 parameter3 ...  parameterN
+```
+
+The parameters number will be defined based in every backup method. And the method depends about the codeID. The codeID, as explained before, identify the backup type that will be used.
+
+When the parameter has more than one option, the "Parameter number" column will have more than one line to clarify what the parameter does. However pay attention that the parameterN with P options, only one option can be used at the same time. This is obvious, but you have to guarantee that you are not adding extra parameters.
 
 ### codeID: 1
 
-```bash
-/usr/bin/backblaze-backup.sh 1 parameter1 parameter2 parameter3
-```
-
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bacbklaze | which s3 service will be used |
-| 2 | yesRemoveAfterSent | remove the files after successfully send the backup |
-| 2 | notReMoveAfterSent | do not remove the files after send |
-| 3 | all | create and send backup of all accounts |
-| 3 | active | create and send backup of all accounts, except suspended accounts |
-| 4 | bucketname | the name of the s3 bucket |
+| 1 | 1 | cyberpanel codeID |
+| 2 | bacbklaze | which s3 service will be used |
+| 3 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 3 | notReMoveAfterSent | do not remove the files after send |
+| 4 | all | create and send backup of all accounts |
+| 4 | active | create and send backup of all accounts, except suspended accounts |
+| 5 | bucketname | the s3 bucket name |
+
+Example:
+```bash
+/usr/bin/backblaze-backup.sh 1 backblaze yesRemoveAfterSent all mybucketname
+```
+- "1": cyberpanel backup method
+- "backblaze" : s3 service that will be used
+- "yesRemoveAfterSent" : the file will be removed after send
+- "all" : create and send backup of all accounts
+- "mybucketname" : the bucketname
 
 ### codeID: 2
-```bash
-/usr/bin/backblaze-backup.sh 2 parameter1 parameter2 parameter3 parameter4
-```
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
@@ -117,9 +137,6 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 | 5 | directory | which directory the temp files and the final backup will be stored |
 
 ### codeID 3
-```bash
-/usr/bin/backblaze-backup.sh 3 parameter1 parameter2 parameter3 parameter4
-```
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
@@ -132,9 +149,6 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 | 5 | directory | which directory the temp files and the final backup will be stored |
 
 ### codeID 4
-```bash
-/usr/bin/backblaze-backup.sh 4 parameter1 parameter2 parameter3 parameter4
-```
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
@@ -147,10 +161,6 @@ The code will identify which kind of backup you want. Maybe you need to just sen
 | 5 | directory | which directory the temp files and the final backup will be stored |
 
 ### codeID 5
-```bash
-/usr/bin/backblaze-backup.sh 5 parameter1 file1
-```
-
 | Parameter number | options | what this mean |
 | --- | --- | --- |
 | 1 | bacbklaze | which s3 service will be used |
@@ -168,11 +178,8 @@ Example:
 - "mybucketname" : the bucketname
 - "yesRemoveAfterSent" : the file will be removed after send
 - "/home/backup/myfile.tar.gz" : the file absolut path
-### codeID 6
-```bash
-/usr/bin/backblaze-backup.sh 6 parameter1 file1 file2 file3 filen
-```
 
+### codeID 6
 | Parameter number | options | what this mean |
 | --- | --- | --- |
 | 1 | bacbklaze | which s3 service will be used |
@@ -180,10 +187,6 @@ Example:
 | 3...n | files | absolut path of the files |
 
 ### codeID 7
-```bash
-/usr/bin/backblaze-backup.sh 7 parameter1 directory1
-```
-
 | Parameter number | options | what this mean |
 | --- | --- | --- |
 | 1 | bacbklaze | which s3 service will be used |
@@ -191,22 +194,13 @@ Example:
 | 3 | directory | absolut path of the directory |
 
 ### codeID 8
-```bash
-/usr/bin/backblaze-backup.sh 8 parameter1 directory1 directory2 directory3 directoryn
-```
-
 | Parameter number | options | what this mean |
 | --- | --- | --- |
 | 1 | bacbklaze | which s3 service will be used |
 | 2 | bucketname | the name of the s3 bucket |
 | 3...n | directories | absolut path of the directories |
 
-
 ### codeID 9
-```bash
-/usr/bin/backblaze-backup.sh 9 parameter1 directory1
-```
-
 | Parameter number | options | what this mean |
 | --- | --- | --- |
 | 1 | bacbklaze | which s3 service will be used |
@@ -214,10 +208,6 @@ Example:
 | 3 | directory | absolut path of the directory |
 
 ### codeID 10
-```bash
-/usr/bin/backblaze-backup.sh 10 parameter1 directory1 directory2 directory3 directoryn
-```
-
 | Parameter number | options | what this mean |
 | --- | --- | --- |
 | 1 | bacbklaze | which s3 service will be used |
