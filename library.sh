@@ -104,7 +104,6 @@ createAndSendCyberpanelBackup()
 {
   for cyberpanel_website in $cyberpanel_websites
   do
-    # TODO fix where is the file and the file name
     /usr/bin/cyberpanel createBackup --domainName $cyberpanel_website &> /dev/null
     backup_file_path=$(ls -hrt /home/${cyberpanel_website}/backup/*.tar.gz | tail -n 1)
     
@@ -116,6 +115,9 @@ createAndSendCyberpanelBackup()
       then
         log ERROR "The Cyberpanel backup procedure of account >>> $cyberpanel_website <<< failed because the file >>> $backup_file_path <<< is not found."
       else
+        # standardize the file name to have file versioning control under s3
+        mv $backup_file_path /home/${cyberpanel_website}/backup/${cyberpanel_website}.tar.gz
+        backup_file_path=/home/${cyberpanel_website}/backup/${cyberpanel_website}.tar.gz
         selectS3ServiceAndSend $backup_file_path
       fi
     fi
