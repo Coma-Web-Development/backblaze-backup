@@ -75,7 +75,7 @@ Generic use of the script:
 ## codeID
 The code will identify which kind of backup you want. Maybe you need to just send a file or one directory or more than one directory. Maybe you want to send cyberpanel (web panel) backups or maybe the vestacp backups. This codeID will identify what type the backup do you want and based on this codeID you will give the right parameters. 
 
-| codeID | backup type |
+| codeID | backup description |
 | --- | --- |
 | 1 | cyberpanel backups |
 | 2 | vestacp backups |
@@ -171,7 +171,6 @@ Example:
 - "all" : create and send backup of all accounts
 - "mybucketname" : the bucketname
 - "/path/to/store/tmp/files/" : path to store the temp files OR path to store the backup files if you will not remove them after sent
-
 
 ### codeID 4
 
