@@ -19,9 +19,9 @@ backup_accounts_status=
 backup_bucket_name=
 backup_procedure_name=
 hestiacp_accounts=
-vestacp_accounts=
-cyberpanel_websites=
-cpanel_accounts=
+vestacp_accounts= # TODO save in tmp file
+cyberpanel_websites= # TODO save in tmp file
+cpanel_accounts= # TODO save in tmp file
 
 # process the vars
 case $backup_type in
