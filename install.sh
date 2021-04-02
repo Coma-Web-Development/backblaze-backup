@@ -10,7 +10,7 @@ installScript()
 {
   cp backblaze-backup.sh /usr/bin/
   chmod +x /usr/bin/backblaze-backup.sh
-  cp backup-library.sh /usr/lib/
+  cp library.sh /usr/lib/backup-library.sh
 }
 
 authorizeAccount()
