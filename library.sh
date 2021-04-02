@@ -99,8 +99,8 @@ createAndSendHestiacpBackup()
         log ERROR "The HestiaCP backup procedure of account >>> $hestiacp_account <<< failed because the file >>> $backup_file_path <<< is not found."
       else
         # standardize the file name to have file versioning control under s3
-        mv $backup_file_path ${backup_dir}/${vestacp_account}.tar
-        backup_file_path=${backup_dir}/${vestacp_account}.tar
+        mv $backup_file_path ${backup_dir}/${hestiacp_account}.tar
+        backup_file_path=${backup_dir}/${hestiacp_account}.tar
         selectS3ServiceAndSend $backup_file_path
       fi
     fi
