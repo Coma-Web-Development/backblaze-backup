@@ -22,10 +22,12 @@ authorizeAccount()
 
 requirementsPackages()
 {
-  echo "Some packages are required. Please install them."
-  echo "- jq"
-  echo "Centos/redhat: yum -y install jq"
-  echo "Ubuntu/debian: apt update && apt -y install jq" 
+  if [ ! -f /usr/bin/jq ]
+  then
+    echo "Please install jq package."
+    ccho "Centos/redhat: yum -y install jq"
+    echo "Ubuntu/debian: apt update && apt -y install jq" 
+  fi
 }
 
 main()
