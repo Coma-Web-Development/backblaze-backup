@@ -26,22 +26,22 @@ cpanel_accounts=
 # process the vars
 case $backup_type in
   1)
-    parameters_count_expected=6
+    parameters_count_expected=5
     logInvalidParametersNumber
     backup_service_name=$2
-    backup_bucket_name=$3
-    backup_remove=$4
-    backup_accounts_status=$5
+    backup_remove=$3
+    backup_accounts_status=$4
+    backup_bucket_name=$5
     backup_procedure_name=cyberpanelBackup
   ;;
 
   2)
-    parameters_count_expected=7
+    parameters_count_expected=6
     logInvalidParametersNumber
     backup_service_name=$2
-    backup_bucket_name=$3
-    backup_remove=$4
-    backup_accounts_status=$5
+    backup_remove=$3
+    backup_accounts_status=$4
+    backup_bucket_name=$5
     backup_dir=$6
     backup_procedure_name=vestacpBackup
   ;;
