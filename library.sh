@@ -65,6 +65,7 @@ createAndSendVestacpBackup()
   for vestacp_account in $vestacp_accounts
   do
     backup_file_path=$(/usr/local/vesta/bin/v-backup-user $vestacp_account | egrep Local | awk '{print $4}')
+    
     if [[ "{$backup_file_path}x" == "x" ]]
     then
       log ERROR "The VestaCP backup procedure failed to create the backup to the account >>> $backup_file_path <<<."
@@ -73,6 +74,9 @@ createAndSendVestacpBackup()
       then
         log ERROR "The VestaCP backup procedure of account >>> $vestacp_account <<< failed because the file >>> $backup_file_path <<< is not found."
       else
+        # standardize the file name to have file versioning control under s3
+        mv $backup_file_path ${backup_dir}/${vestacp_account}.tar
+        backup_file_path=${backup_dir}/${vestacp_account}.tar
         selectS3ServiceAndSend $backup_file_path
       fi
     fi
@@ -85,6 +89,7 @@ createAndSendHestiacpBackup()
   for hestiacp_account in $hestiacp_accounts
   do
     backup_file_path=$(/usr/local/hestia/bin/v-backup-user $hestiacp_account | egrep Local | awk '{print $4}')
+
     if [[ "{$backup_file_path}x" == "x" ]]
     then
       log ERROR "The VestaCP backup procedure failed to create the backup to the account >>> $backup_file_path <<<."
@@ -93,6 +98,9 @@ createAndSendHestiacpBackup()
       then
         log ERROR "The HestiaCP backup procedure of account >>> $hestiacp_account <<< failed because the file >>> $backup_file_path <<< is not found."
       else
+        # standardize the file name to have file versioning control under s3
+        mv $backup_file_path ${backup_dir}/${vestacp_account}.tar
+        backup_file_path=${backup_dir}/${vestacp_account}.tar
         selectS3ServiceAndSend $backup_file_path
       fi
     fi
@@ -304,6 +312,7 @@ testBackupDefaultDir()
     if [ ! -d $backup_dir ]
     then
       log ERROR "The provided directory to create temp files >>> $backup_dir <<< does not exist. Aborting with return code error >>> 7 <<<."
+      exit 7
     fi
   fi
 }
