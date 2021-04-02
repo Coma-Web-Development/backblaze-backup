@@ -176,22 +176,24 @@ Example:
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bacbklaze | which s3 service will be used |
-| 2 | bucketname | the name of the s3 bucket |
-| 3 | yesRemoveAfterSent | remove the files after successfully send the backup |
-| 3 | notReMoveAfterSent | do not remove the files after send |
-| 4 | all | create and send backup of all accounts |
-| 4 | active | create and send backup of all accounts, except suspended accounts |
-| 5 | directory | which directory the temp files and the final backup will be stored |
+| 1 | 1 | cpanel codeID |
+| 2 | bacbklaze | which s3 service will be used |
+| 3 | bucketname | the name of the s3 bucket |
+| 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 4 | notReMoveAfterSent | do not remove the files after send |
+| 5 | all | create and send backup of all accounts |
+| 5 | active | create and send backup of all accounts, except suspended accounts |
+| 6 | directory | which directory the temp files and the final backup will be stored |
 
 ### codeID 5
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bacbklaze | which s3 service will be used |
-| 2 | bucketname | the name of the s3 bucket |
-| 3 | yesRemoveAfterSent | remove the files after successfully send the backup |
-| 3 | notReMoveAfterSent | do not remove the files after send |
-| 4 | file | absolut path of the filename |
+| 1 | 1 | single file codeID |
+| 2 | bacbklaze | which s3 service will be used |
+| 3 | bucketname | the name of the s3 bucket |
+| 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 4 | notReMoveAfterSent | do not remove the files after send |
+| 5 | file | absolut path of the filename |
 
 Example:
 ```bash
@@ -206,38 +208,52 @@ Example:
 ### codeID 6
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bacbklaze | which s3 service will be used |
-| 2 | bucketname | the name of the s3 bucket |
-| 3...n | files | absolut path of the files |
+| 1 | 1 | multiple files codeID |
+| 2 | bacbklaze | which s3 service will be used |
+| 3 | bucketname | the name of the s3 bucket |
+| 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 4 | notReMoveAfterSent | do not remove the files after send |
+| 5...N | file1 file2 ... fileN | absolut path of the files |
 
 ### codeID 7
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bacbklaze | which s3 service will be used |
-| 2 | bucketname | the name of the s3 bucket |
-| 3 | directory | absolut path of the directory |
+| 1 | 1 | single directory codeID |
+| 2 | bacbklaze | which s3 service will be used |
+| 3 | bucketname | the name of the s3 bucket |
+| 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 4 | notReMoveAfterSent | do not remove the files after send |
+| 5 | directory | absolut path of the directory |
 
 ### codeID 8
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bacbklaze | which s3 service will be used |
-| 2 | bucketname | the name of the s3 bucket |
-| 3...n | directories | absolut path of the directories |
+| 1 | 1 | multiple directories codeID |
+| 2 | bacbklaze | which s3 service will be used |
+| 3 | bucketname | the name of the s3 bucket |
+| 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 4 | notReMoveAfterSent | do not remove the files after send |
+| 5...N | dir1 dir2 ... dirN | absolut path of the directories |
 
 ### codeID 9
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bacbklaze | which s3 service will be used |
-| 2 | bucketname | the name of the s3 bucket |
-| 3 | directory | absolut path of the directory |
+| 1 | 1 | single directory with compression codeID |
+| 2 | bacbklaze | which s3 service will be used |
+| 3 | bucketname | the name of the s3 bucket |
+| 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 4 | notReMoveAfterSent | do not remove the files after send |
+| 5 | directory | absolut path of the directory |
 
 ### codeID 10
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | bacbklaze | which s3 service will be used |
-| 2 | bucketname | the name of the s3 bucket |
-| 3...n | directories | absolut path of the directories |
-
+| 1 | 1 | multiple directories with compression codeID |
+| 2 | bacbklaze | which s3 service will be used |
+| 3 | bucketname | the name of the s3 bucket |
+| 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
+| 4 | notReMoveAfterSent | do not remove the files after send |
+| 5...N | dir1 dir1 ... dirN | absolut path of the directories |
 
 # How to add to cronjob
 You need to execute the script as root. So add the cronjob to root crontab. You can manually edit the file
