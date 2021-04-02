@@ -67,13 +67,11 @@ createAndSendVestacpBackup()
     backup_file_path=$(/usr/local/vesta/bin/v-backup-user $vestacp_account | egrep Local | awk '{print $4}')
     if [[ "{$backup_file_path}x" == "x" ]]
     then
-      log ERROR "The VestaCP backup procedure failed to create the backup to the account >>> $backup_file_path <<<. Aborting with return code >>> 7 <<<."
-      exit 7
+      log ERROR "The VestaCP backup procedure failed to create the backup to the account >>> $backup_file_path <<<."
     else
       if [ ! -f $backup_file_path ]
       then
-        log ERROR "The VestaCP backup procedure of account >>> $vestacp_account <<< failed because the file >>> $backup_file_path <<< is not found. Aborting with return code >>> 12 <<<."
-        exit 12
+        log ERROR "The VestaCP backup procedure of account >>> $vestacp_account <<< failed because the file >>> $backup_file_path <<< is not found."
       else
         selectS3ServiceAndSend $backup_file_path
       fi
@@ -89,13 +87,11 @@ createAndSendHestiacpBackup()
     backup_file_path=$(/usr/local/hestia/bin/v-backup-user $hestiacp_account | egrep Local | awk '{print $4}')
     if [[ "{$backup_file_path}x" == "x" ]]
     then
-      log ERROR "The VestaCP backup procedure failed to create the backup to the account >>> $backup_file_path <<<. Aborting with return code >>> 8 <<<."
-      exit 8
+      log ERROR "The VestaCP backup procedure failed to create the backup to the account >>> $backup_file_path <<<."
     else
       if [ ! -f $backup_file_path ]
       then
-        log ERROR "The HestiaCP backup procedure of account >>> $hestiacp_account <<< failed because the file >>> $backup_file_path <<< is not found. Aborting with return code >>> 11 <<<."
-        exit 11
+        log ERROR "The HestiaCP backup procedure of account >>> $hestiacp_account <<< failed because the file >>> $backup_file_path <<< is not found."
       else
         selectS3ServiceAndSend $backup_file_path
       fi
@@ -114,13 +110,11 @@ createAndSendCyberpanelBackup()
     
     if [[ "{$backup_file_path}x" == "x" ]]
     then
-      log ERROR "The Cyberpanel backup procedure failed to create the backup to the account >>> $cyberpanel_website <<<. Aborting with return code >>> 9 <<<."
-      exit 9
+      log ERROR "The Cyberpanel backup procedure failed to create the backup to the account >>> $cyberpanel_website <<<."
     else
       if [ ! -f $backup_file_path ]
       then
-        log ERROR "The Cyberpanel backup procedure of account >>> $cyberpanel_website <<< failed because the file >>> $backup_file_path <<< is not found. Aborting with return code >>> 10 <<<."
-        exit 10
+        log ERROR "The Cyberpanel backup procedure of account >>> $cyberpanel_website <<< failed because the file >>> $backup_file_path <<< is not found."
       else
         selectS3ServiceAndSend $backup_file_path
       fi
