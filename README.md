@@ -152,7 +152,7 @@ Example:
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | 1 | hestiacp codeID |
+| 1 | 3 | hestiacp codeID |
 | 1 | bacbklaze | which s3 service will be used |
 | 2 | yesRemoveAfterSent | remove the files after successfully send the backup |
 | 2 | notReMoveAfterSent | do not remove the files after send |
@@ -176,7 +176,7 @@ Example:
 
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | 1 | cpanel codeID |
+| 1 | 4 | cpanel codeID |
 | 2 | bacbklaze | which s3 service will be used |
 | 3 | bucketname | the name of the s3 bucket |
 | 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
@@ -188,7 +188,7 @@ Example:
 ### codeID 5
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | 1 | single file codeID |
+| 1 | 5 | single file codeID |
 | 2 | bacbklaze | which s3 service will be used |
 | 3 | bucketname | the name of the s3 bucket |
 | 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
@@ -208,7 +208,7 @@ Example:
 ### codeID 6
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | 1 | multiple files codeID |
+| 1 | 6 | multiple files codeID |
 | 2 | bacbklaze | which s3 service will be used |
 | 3 | bucketname | the name of the s3 bucket |
 | 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
@@ -218,7 +218,7 @@ Example:
 ### codeID 7
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | 1 | single directory codeID |
+| 1 | 7 | single directory codeID |
 | 2 | bacbklaze | which s3 service will be used |
 | 3 | bucketname | the name of the s3 bucket |
 | 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
@@ -228,7 +228,7 @@ Example:
 ### codeID 8
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | 1 | multiple directories codeID |
+| 1 | 8 | multiple directories codeID |
 | 2 | bacbklaze | which s3 service will be used |
 | 3 | bucketname | the name of the s3 bucket |
 | 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
@@ -238,7 +238,7 @@ Example:
 ### codeID 9
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | 1 | single directory with compression codeID |
+| 1 | 9 | single directory with compression codeID |
 | 2 | bacbklaze | which s3 service will be used |
 | 3 | bucketname | the name of the s3 bucket |
 | 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
@@ -248,7 +248,7 @@ Example:
 ### codeID 10
 | Parameter number | options | what this mean |
 | --- | --- | --- |
-| 1 | 1 | multiple directories with compression codeID |
+| 1 | 10 | multiple directories with compression codeID |
 | 2 | bacbklaze | which s3 service will be used |
 | 3 | bucketname | the name of the s3 bucket |
 | 4 | yesRemoveAfterSent | remove the files after successfully send the backup |
