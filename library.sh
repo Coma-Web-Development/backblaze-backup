@@ -91,7 +91,7 @@ createAndSendHestiacpBackup()
 
     if [[ "{$backup_file_path}x" == "x" ]]
     then
-      log ERROR "The VestaCP backup procedure failed to create the backup to the account >>> $backup_file_path <<<."
+      log ERROR "The HestiaCP backup procedure failed to create the backup to the account >>> $backup_file_path <<<."
     else
       if [ ! -f $backup_file_path ]
       then
