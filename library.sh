@@ -142,22 +142,64 @@ testRootPermission()
 
 getAllUsersVestacp()
 {
-  vestacp_accounts=$(/usr/local/vesta/bin/v-list-users | tail -n +3 | awk '{print $1}')
+  # avoid to use v-list-users due possible environment variables changes
+  # using the same method used by v-list-users
+  vestacp_possible_accounts=$(cat /etc/passwd | egrep @ | cut -f1 -d:)
+  for vesta_user in $vestacp_possible_accounts
+  do
+    vestacp_accounts="$vesta_user $vestacp_accounts"
+  done
 }
 
 getActiveUsersVestacp()
 {
-  vestacp_accounts=$(/usr/local/vesta/bin/v-list-users | tail -n +3 | egrep -i "[a-zA-Z0-9]+[ ]+[a-zA-Z0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+no[ ]+[0-9]+-[0-9]+-[0-9]+" | awk '{print $1}')
+  # avoid to use v-list-users due possible environment variables changes
+  # using the same method used by v-list-users
+  vestacp_possible_accounts=$(cat /etc/passwd | egrep @ | cut -f1 -d:)
+
+  for vesta_user in $vestacp_possible_accounts
+  do
+    if [ -f "/usr/local/vesta/data/users/$vesta_user/user.conf" ]
+    then
+      if cat /usr/local/vesta/data/users/$vesta_user/user.conf | egrep -qi "^suspended.*\=.*no.*"
+      then
+        vestacp_accounts="$vesta_user $vestacp_accounts"
+      fi
+    fi
+  done
 }
 
 getAllUsersHestiacp()
 {
-  hestiacp_accounts=$(/usr/local/hestia/bin/v-list-users | tail -n +3 | awk '{print $1}')
+  # avoid to use v-list-users due possible environment variables changes
+  # using the same method used by v-list-users
+  hestiacp_possible_accounts=$(cat /etc/passwd | egrep @ | cut -f1 -d:)
+
+  for hestia_user in $hestiacp_possible_accounts
+  do
+    if [ -f "/usr/local/hestia/data/users/$hestia_user/user.conf" ]
+    then
+      hestiacp_accounts="$hestia_user $hestiacp_accounts"
+    fi
+  done
 }
 
 getActiveUsersHestiacp()
 {
-  hestiacp_accounts=$(/usr/local/hestia/bin/v-list-users | tail -n +3 | egrep -i "[a-zA-Z0-9]+[ ]+[a-zA-Z0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+[0-9]+[ ]+no[ ]+[0-9]+-[0-9]+-[0-9]+" | awk '{print $1}')
+  # avoid to use v-list-users due possible environment variables changes
+  # using the same method used by v-list-users
+  hestiacp_possible_accounts=$(cat /etc/passwd | egrep @ | cut -f1 -d:)
+
+  for hestia_user in $hestiacp_possible_accounts
+  do
+    if [ -f "/usr/local/hestia/data/users/$hestia_user/user.conf" ]
+    then
+      if cat /usr/local/hestia/data/users/$hestia_user/user.conf | egrep -qi "^suspended.*\=.*no.*"
+      then
+        hestiacp_accounts="$hestia_user $hestiacp_accounts"
+      fi
+    fi
+  done
 }
 
 
